@@ -17,7 +17,10 @@
     </style>
 </head>
 <body>
-    <div class="container ">
+    <nav class="bg-blue-400 h-16 fixed inset-x-0 z-50">
+        Minimaps
+    </nav>
+    <div class="container pt-16">
         <div class="bg-gradient-to-r from-blue-500 via-green-400 to-yellow-500 bg-clip-text">
             <h1 class="text-center text-transparent font-extrabold">Welcome to Minimaps</h1>
         </div>
@@ -27,6 +30,41 @@
             <li>Negocios</li>
             <li>Servicios</li>
         </ul>
+        <div class="container py-4">
+            <div class="bg-gray-300 p-4 relative">
+                <div class="bg-gray-400 p-4">
+                    <div class="bg-blue-400 p-4">
+
+                    </div>
+                    <div class="bg-blue-600 p-4 absolute inset-y-0 left-0">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container bg-blue-300 p-4 h-64 overflow-auto">
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, dolor quam voluptatum aperiam reprehenderit tempora nihil veritatis libero laborum vel obcaecati neque fugiat minus, sed possimus impedit commodi, magnam doloribus.</p>
+            <p>Voluptatem, odit beatae? Labore esse nisi et eaque rem aut debitis quidem totam error eum consectetur commodi consequatur explicabo, rerum nam, officia neque quo itaque voluptates. Quod id vero nobis!</p>
+            <p>Ab illo rerum quidem temporibus. Consectetur quasi non at quia nostrum dolorum. Voluptate aliquam error nobis consequuntur unde repellat harum accusantium, vitae aut alias voluptas, commodi cum ut, soluta necessitatibus.</p>
+            <p>Repellat iure velit quo recusandae commodi libero molestias molestiae, quod eaque, nostrum sint. Tempore, ipsam fugit! Ex, aliquam tempora vel velit sed, distinctio doloremque nam exercitationem voluptas recusandae corrupti magni.</p>
+            <p>Quas esse molestiae beatae vel sapiente, quae numquam iure excepturi molestias? Magni voluptatem labore ducimus excepturi blanditiis expedita cumque debitis dolorem deleniti, commodi iure minima voluptates dolor saepe repudiandae eius.</p>
+            <p>Fugit voluptas temporibus soluta! Dicta natus similique accusantium. Cumque ducimus recusandae laboriosam, pariatur quas impedit. Totam numquam eos suscipit quaerat distinctio iusto! Earum hic dignissimos ut qui ea architecto dolore.</p>
+            <p>Fugiat quasi nobis reiciendis cupiditate est quibusdam quam alias dicta, sint a. Maxime eveniet necessitatibus, ducimus pariatur eaque harum eos! Reprehenderit perspiciatis culpa animi aut et dignissimos minus veniam aspernatur?</p>
+            <p>Ut, expedita repudiandae. Ipsa laudantium voluptate aliquid ratione quo? Eaque, minima. Aperiam, odit totam! Assumenda, esse quibusdam repellendus, ducimus, accusamus praesentium ut at asperiores ex officia commodi. Minima, qui quia!</p>
+        </div>
+        <div class="container mt-4 mb-4">
+            <div class="bg-gray-400 text-gray-700 text-center px-4 py-2 inline-block">1</div>
+            <div class="bg-gray-400 text-gray-700 text-center px-4 py-2 my-2 inline-block">2</div>
+            <div class="bg-gray-400 text-gray-700 text-center px-4 py-2 inline-block lg:hidden">3</div>
+        </div>
+        <div class="container mt-4 mb-4">
+            <div class="bg-gray-400 w-64 h-32 p-4 border-8 border-gray-800 box-content">
+                <div class="bg-gray-500 h-full w-full">
+
+                </div>
+            </div>
+        </div>
+
         <div class="bg-black w-64 h-screen">
 
         </div>
