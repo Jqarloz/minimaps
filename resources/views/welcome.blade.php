@@ -15,8 +15,13 @@
             margin-right: auto;
         }
     </style>
+    {{-- Livewire --}}
+    @livewireStyles
 </head>
 <body>
+    
+    @livewireScripts
+    {{-- Tailwinds --}}
     <nav class="bg-blue-400 h-16 fixed inset-x-0 z-50">
         Minimaps
     </nav>
@@ -30,6 +35,19 @@
             <li>Negocios</li>
             <li>Servicios</li>
         </ul>
+
+        {{-- Livewire --}}
+        <livewire:test.paises/>
+
+        @php
+            $count = 15;
+            $data = [
+                'titulo' => 'Liwere Counter Button:',
+                'descripcion' => 'metodo de asignacion de variable por array'
+            ];
+        @endphp
+        <livewire:test.counter :count="$count" :data="$data"/>
+
         <div class="container py-4">
             <div class="bg-gray-300 p-4 relative">
                 <div class="bg-gray-400 p-4">
