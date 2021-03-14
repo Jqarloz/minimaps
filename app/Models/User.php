@@ -77,4 +77,10 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Models\Video');
     }
+
+    //Relacion Muchos a Muchos
+    public function roles()
+    {
+        return $this->belongsToMany('App\Models\Role');
+    }
 }
