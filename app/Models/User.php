@@ -66,4 +66,15 @@ class User extends Authenticatable
         //$profile = Profile::where('user_id', $this->id)->first(); //metodo por consulta 
         return $this->hasOne(Profile::class, 'user_id');
     }
+
+    //Relacion uno a muchos
+    public function posts()
+    {
+        return $this->hasMany('App\Models\Post');
+    }
+
+    public function videos()
+    {
+        return $this->hasMany('App\Models\Video');
+    }
 }
