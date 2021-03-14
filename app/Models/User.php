@@ -78,6 +78,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Video');
     }
 
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
     //Relacion Muchos a Muchos
     public function roles()
     {
