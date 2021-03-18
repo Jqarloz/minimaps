@@ -12,6 +12,7 @@ use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Profile;
+use App\Models\Shop;
 
 class User extends Authenticatable
 {
@@ -68,6 +69,11 @@ class User extends Authenticatable
     }
 
     //Relacion uno a muchos
+    public function shops()
+    {
+        return $this->hasMany(Shop::class);
+    }
+
     public function posts()
     {
         return $this->hasMany('App\Models\Post');

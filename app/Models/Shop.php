@@ -5,27 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+use App\Models\User;
+use App\Models\Category;
+
+
+class Shop extends Model
 {
     use HasFactory;
-
-    protected $fillable = ['name', 'body'];
 
     //Relacion uno a muchos (inversa)
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class);
     }
 
-    public function categoria()
+    public function category()
     {
-        return $this->belongsTo('App\Models\Categoria');
-    }
-
-    //Relacion 1 a 1 polimorfica
-    public function image()
-    {
-        return $this->morphOne('App\Models\Image', 'imageable');
+        return $this->belongsTo(Category::class);
     }
 
     //Relacion muchos a muchos polimorficas
@@ -33,4 +29,5 @@ class Post extends Model
     {
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
+
 }
