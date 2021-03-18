@@ -30,4 +30,10 @@ class Shop extends Model
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
+    //Relacion 1 a 1 polimorfica
+    public function image()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
+
 }

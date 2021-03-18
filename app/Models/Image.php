@@ -11,6 +11,7 @@ class Image extends Model
 
     protected $guarded = [];
 
+    //Relacion polimorfica
     public function imageable()
     {
         return $this->morphTo();
