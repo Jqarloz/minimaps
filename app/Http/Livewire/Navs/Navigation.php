@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Navs;
 
+use App\Models\Menu;
 use Livewire\Component;
 
 class Navigation extends Component
 {
     public function render()
     {
-        return view('livewire.navs.navigation');
+        $menus = Menu::all();
+        return view('livewire.navs.navigation', compact('menus'));
     }
 }
