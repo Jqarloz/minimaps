@@ -22,7 +22,9 @@
         <x-jet-banner />
 
         <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+            @livewire('navs.navigation')
+            
+            {{-- @livewire('navigation-menu') --}}
 
             <!-- Page Heading -->
             {{--@if (isset($header))
