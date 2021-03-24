@@ -9,9 +9,9 @@ module.exports = {
     ],
 
     theme: {
-        container:{
+        /* container:{
             center: true,
-        },
+        }, */
         extend: {
             fontFamily: {
                 sans: ['Nunito', ...defaultTheme.fontFamily.sans],
@@ -27,4 +27,9 @@ module.exports = {
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
+
+
+    corePlugins: {
+        container: false,
+    }
 };
