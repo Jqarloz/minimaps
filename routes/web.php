@@ -14,6 +14,10 @@ Route::get('/', [ShopController::class, 'index'])->name('shops.index');
 
 Route::get('shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
 
+Route::get('shops/category/{category}', [ShopController::class, 'category'])->name('shops.category');
+
+Route::get('tags/{tag}', [ShopController::class, 'tag'])->name('shops.tag');
+
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
