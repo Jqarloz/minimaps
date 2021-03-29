@@ -16,7 +16,7 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        $shops = Shop::factory(100)->create();
+        $shops = Shop::factory(300)->create();
 
         foreach ($shops as $shop) {
             Image::factory(1)->create([

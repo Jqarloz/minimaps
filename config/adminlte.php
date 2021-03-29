@@ -254,7 +254,7 @@ return [
             'icon' => 'far fa-fw fa-bookmark',
             'active' => ['admin/tags*']
         ],
-        [
+        /*[
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -291,23 +291,13 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
-        ['header' => 'labels'],
+        ],*/
+        ['header' => 'Mi Mapa'],
         [
-            'text'       => 'important',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'warning',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'information',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
+            'text'          => 'Mis Negocios',
+            'route'         => 'admin.shops.index',
+            'icon'          => 'fas fa-fw fa-store-alt'
+        ]
     ],
 
     /*
@@ -428,5 +418,5 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Other-Configuration
     */
 
-    'livewire' => false,
+    'livewire' => true,
 ];
