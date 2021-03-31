@@ -3,6 +3,7 @@
 @section('title', 'MiniMaps')
 
 @section('content_header')
+    <a class="btn btn-success float-right" href="{{route('admin.shops.create')}}">Nuevo Negocio</a>
     <h1>Negocios Inicio</h1>
 @stop
 

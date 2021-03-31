@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Shop;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -16,7 +18,11 @@ class ShopController extends Controller
 
     public function create()
     {
-        return view('admin.shops.create');
+        $categories = Category::where('type', 'Shops')->pluck('name', 'id');
+
+        $tags = Tag::all();
+
+        return view('admin.shops.create', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
