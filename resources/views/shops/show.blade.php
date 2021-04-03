@@ -4,14 +4,18 @@
         <h1>{{$shop->name}}</h1>
 
         <div class="text-lg mb-4 text-gray-800 font-bold">
-            {{$shop->description}}
+            {!!$shop->description!!}
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             {{-- Contenido Principal --}}
             <div class="lg:col-span-2">
                 <figure>
-                    <img class="w-full h-80 object-cover bf-center" src="{{Storage::url($shop->image->url)}}" alt="">
+                    @if ($shop->image)
+                        <img class="w-full h-80 object-cover bf-center" src="{{Storage::url($shop->image->url)}}" alt="">
+                    @else
+                        <img class="w-full h-80 object-cover bf-center" src="{{Storage::url('default/shop.jpg')}}" alt="">
+                    @endif
                 </figure>
             </div>
             {{-- Contenido Relacionado --}}
@@ -22,7 +26,11 @@
                     @foreach ($similares as $similar)
                         <li class="mb-4">
                             <a class="flex" href="{{route('shops.show', $similar)}}">
-                                <img class="w-36 h-20 object-cover object-center" src="{{Storage::url($similar->image->url)}}" alt="">
+                                @if ($similar->image)
+                                    <img class="w-36 h-20 object-cover object-center" src="{{Storage::url($similar->image->url)}}" alt="">
+                                @else
+                                    <img class="w-36 h-20 object-cover object-center" src="{{Storage::url('default/shop.jpg')}}" alt="">        
+                                @endif
                                 <span class="ml-2 text-gray-700">{{$similar->name}}</span>
                             </a>
                         </li>   

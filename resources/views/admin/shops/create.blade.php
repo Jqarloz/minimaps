@@ -9,7 +9,8 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            {!! Form::open(['route' => 'admin.shops.store', 'autocomplete' => 'off']) !!}    
+            {!! Form::open(['route' => 'admin.shops.store', 'autocomplete' => 'off', 'files' => true]) !!}    
+                {!! Form::hidden('user_id', auth()->user()->id) !!}
 
                 @include('admin.shops.partials.form')
 
@@ -21,7 +22,18 @@
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+        .image-wrapper{
+            position: relative;
+            padding-bottom: 56.25%;
+        }
+        .image-wrapper img{
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 @stop
 
 @section('js')
@@ -41,5 +53,19 @@
         .catch( error => {
             console.error( error );
         } );
+
+        //Cambiar imagen
+        document.getElementById("file").addEventListener('change', cambiarImagen);
+
+        function cambiarImagen(event){
+            var file = event.target.files[0];
+
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById("picture").setAttribute('src', event.target.result); 
+            };
+
+            reader.readAsDataURL(file);
+        }
     </script>
 @endsection

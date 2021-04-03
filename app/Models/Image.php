@@ -11,6 +11,7 @@ class Image extends Model
 
     protected $guarded = [];
 
+    protected $fillable = ['url'];
     //Relacion polimorfica
     public function imageable()
     {

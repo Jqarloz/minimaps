@@ -18,7 +18,7 @@ class CreateShopsTable extends Migration
 
             $table->string('name');
             $table->string('slug');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('status')->default(1);
 
             $table->unsignedBigInteger('user_id');
