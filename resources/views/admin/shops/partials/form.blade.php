@@ -62,7 +62,11 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="image-wrapper">
-                    <img id="picture" src="{{Storage::url('default/shop.jpg')}}" alt="">
+                    @isset ($shop->image)
+                        <img id="picture" src="{{Storage::url($shop->image->url)}}" alt="">
+                    @else
+                        <img id="picture" src="{{Storage::url('default/shop.jpg')}}" alt="">
+                    @endisset
                 </div>
             </div>
             <div class="col">

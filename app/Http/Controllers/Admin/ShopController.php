@@ -9,7 +9,7 @@ use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
-use App\Http\Requests\Admin\ShopStoreRequest;
+use App\Http\Requests\Admin\ShopRequest;
 
 class ShopController extends Controller
 {
@@ -28,7 +28,7 @@ class ShopController extends Controller
         return view('admin.shops.create', compact('categories', 'tags'));
     }
 
-    public function store(ShopStoreRequest $request)
+    public function store(ShopRequest $request)
     {
         $shop = Shop::create($request->all());
 
@@ -62,16 +62,45 @@ class ShopController extends Controller
 
     public function edit(Shop $shop)
     {
-        return view('admin.shops.edit', compact('shop'));
+        $categories = Category::where('type', 'Shops')->pluck('name', 'id');
+
+        $tags = Tag::all();
+
+        return view('admin.shops.edit', compact('shop', 'categories', 'tags'));
     }
 
-    public function update(Request $request, Shop $shop)
+    public function update(ShopRequest $request, Shop $shop)
     {
-        //
+        $shop->update($request->all());
+
+        if ($request->file('file')) {
+            $url = Storage::put('shops', $request->file('file'));
+
+            if ($shop->image) {
+                Storage::delete($shop->image->url);
+
+                $shop->image()->update([
+                    'url' => $url
+                ]);
+            }else{
+                $shop->image()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+
+        if ($request->tags) {
+            $shop->tags()->sync($request->tags);
+        };
+
+        return redirect()->route('admin.shops.edit',$shop)->with('info', 'El negocio se actualizo con éxito');
+
     }
 
     public function destroy(Shop $shop)
     {
-        //
+        $shop->delete();
+        
+        return redirect()->route('admin.shops.index')->with('info', 'El negocio se elimino con éxito');
     }
 }
