@@ -8,9 +8,12 @@ use App\Models\Shop;
 
 class ShopObserver
 {
-    public function created(Shop $shop)
+    public function creating(Shop $shop)
     {
-        //
+        if (! \App::runningInConsole()) {
+            $shop->user_id = auth()->user()->id;
+        }
+        
     }
 
     
