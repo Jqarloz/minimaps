@@ -8,7 +8,14 @@ use Illuminate\Http\Request;
 
 class TagController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('can:admin.tags.index')->only('index');
+        $this->middleware('can:admin.tags.create')->only('create', 'store');
+        $this->middleware('can:admin.tags.edit')->only('edit', 'update');
+        $this->middleware('can:admin.tags.destroy')->only('destroy');
+    }
+
     public function index()
     {
         $tags = Tag::all();
@@ -39,11 +46,6 @@ class TagController extends Controller
 
         $tag = Tag::create($request->all());
         return redirect()->route('admin.tags.edit', compact('tag'));
-    }
-
-    public function show(Tag $tag)
-    {
-        return view('admin.tags.show', compact('tag'));
     }
 
     public function edit(Tag $tag)

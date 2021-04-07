@@ -12,29 +12,16 @@ use Spatie\Permission\Models\Permission;
 class UserController extends Controller
 {
     
+    public function __construct()
+    {
+        $this->middleware('can:admin.users.index')->only('index');
+        $this->middleware('can:admin.users.edit')->only('edit', 'update');
+        $this->middleware('can:admin.users.destroy')->only('destroy');
+    }
+
     public function index()
     {
         return view('admin.users.index');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-    public function show($id)
-    {
-        //
     }
 
     
@@ -50,12 +37,6 @@ class UserController extends Controller
         return redirect()->route('admin.users.edit', $user)->with('info', 'Se Assignó los roles correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(User $user)
     {
         $user->delete();

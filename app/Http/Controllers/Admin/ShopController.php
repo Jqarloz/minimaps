@@ -13,7 +13,14 @@ use App\Http\Requests\Admin\ShopRequest;
 
 class ShopController extends Controller
 {
-    
+    public function __construct()
+    {
+        $this->middleware('can:admin.shops.index')->only('index');
+        $this->middleware('can:admin.shops.create')->only('create', 'store');
+        $this->middleware('can:admin.shops.edit')->only('edit', 'update');
+        $this->middleware('can:admin.shops.destroy')->only('destroy');
+    }
+
     public function index()
     {
         return view('admin.shops.index');
@@ -53,11 +60,6 @@ class ShopController extends Controller
         };
         
         return redirect()->route('admin.shops.edit', $shop);
-    }
-
-    public function show(Shop $shop)
-    {
-        return view('admin.shops.show', compact('shop'));
     }
 
     public function edit(Shop $shop)
