@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Jetstream\HasTeams;
 use Laravel\Sanctum\HasApiTokens;
+use Spatie\Permission\Traits\HasRoles; 
 
 use App\Models\Profile;
 use App\Models\Shop;
@@ -22,6 +23,7 @@ class User extends Authenticatable
     use HasTeams;
     use Notifiable;
     use TwoFactorAuthenticatable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -90,10 +92,10 @@ class User extends Authenticatable
     }
 
     //Relacion Muchos a Muchos
-    public function roles()
+    /* public function roles()
     {
         return $this->belongsToMany('App\Models\Role');
-    }
+    } */
 
     //Relacion polimorfica
     public function image()
