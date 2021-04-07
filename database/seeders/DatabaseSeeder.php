@@ -20,6 +20,9 @@ class DatabaseSeeder extends Seeder
     {
         Storage::deleteDirectory('shops');
         Storage::makeDirectory('shops');
+
+        $this->call(RolSeeder::class);
+
         $this->call(UserSeeder::class);
         Category::factory(4)->create();
         Tag::factory(12)->create();
