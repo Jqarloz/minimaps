@@ -62,6 +62,8 @@ class ShopController extends Controller
 
     public function edit(Shop $shop)
     {
+        $this->authorize('author', $shop);
+
         $categories = Category::where('type', 'Shops')->pluck('name', 'id');
 
         $tags = Tag::all();
@@ -71,6 +73,8 @@ class ShopController extends Controller
 
     public function update(ShopRequest $request, Shop $shop)
     {
+        $this->authorize('author', $shop);
+
         $shop->update($request->all());
 
         if ($request->file('file')) {
@@ -99,6 +103,8 @@ class ShopController extends Controller
 
     public function destroy(Shop $shop)
     {
+        $this->authorize('author', $shop);
+
         $shop->delete();
         
         return redirect()->route('admin.shops.index')->with('info', 'El negocio se elimino con éxito');

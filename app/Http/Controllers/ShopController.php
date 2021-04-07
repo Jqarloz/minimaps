@@ -18,6 +18,8 @@ class ShopController extends Controller
 
     public function show(Shop $shop)
     {
+        $this->authorize('published', $shop);
+
         $similares = Shop::where('category_id', $shop->category_id)
                             ->where('status', 2)
                             ->where('id', '!=', $shop->id)
