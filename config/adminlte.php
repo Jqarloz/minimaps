@@ -241,18 +241,28 @@ return [
             /* 'label'       => 4,
             'label_color' => 'success', */  
         ],
-        ['header' => 'Administrador'],
+        [
+            'text'        => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'can'         => 'admin.users.index'
+            /* 'label'       => 4,
+            'label_color' => 'success', */  
+        ],
+        /* ['header' => 'Administrador'], */
         [
             'text' => 'Categorías',
             'route'  => 'admin.categories.index',
             'icon' => 'fab fa-fw fa-buffer',
-            'active' => ['admin/categories*']
+            'active' => ['admin/categories*'],
+            'can'         => 'admin.categories.index'
         ],
         [
             'text' => 'Etiquetas',
             'route'  => 'admin.tags.index',
             'icon' => 'far fa-fw fa-bookmark',
-            'active' => ['admin/tags*']
+            'active' => ['admin/tags*'],
+            'can'         => 'admin.tags.index'
         ],
         /*[
             'text'    => 'multilevel',
@@ -292,11 +302,13 @@ return [
                 ],
             ],
         ],*/
-        ['header' => 'Mi Mapa'],
+        ['header' => 'Mi Mapa',
+        'can'         => 'admin.shops.index'],
         [
             'text'          => 'Mis Negocios',
             'route'         => 'admin.shops.index',
-            'icon'          => 'fas fa-fw fa-store-alt'
+            'icon'          => 'fas fa-fw fa-store-alt',
+            'can'         => 'admin.shops.index'
         ]
     ],
 
