@@ -3,9 +3,9 @@
 @section('title', 'MiniMaps')
 
 @section('content_header')
-    {{-- @can('admin.categories.create') --}}
+    @can('admin.roles.create')
         <a class="btn btn-success float-right" href="{{route('admin.roles.create')}}">Nuevo Rol</a>
-    {{-- @endcan --}}
+    @endcan
     <h1>Roles Inicio</h1>
     @if (session('info'))
         <div class="alert alert-success">
@@ -31,19 +31,19 @@
                             <td>{{$role->id}}</td>
                             <td>{{$role->name}}</td>
                             <td width="10px">
-                                {{-- @can('admin.roles.edit') --}}
+                                @can('admin.roles.edit')
                                     <a href="{{route('admin.roles.edit', $role)}}" class="btn btn-primary btn-sm">Editar</a>                                    
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                             <td width="10px">
-                                {{-- @can('admin.roles.destroy') --}}
+                                @can('admin.roles.destroy')
                                     <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
                                         @csrf
                                         @method('delete')
 
                                         <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                                     </form>
-                                {{-- @endcan --}}
+                                @endcan
                             </td>
                         </tr>
                     @endforeach

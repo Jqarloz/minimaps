@@ -253,7 +253,7 @@ return [
             'text'        => 'Roles y Permisos',
             'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-fw fa-users-cog',
-            //'can'         => 'admin.roles.index'
+            'can'         => 'admin.roles.index'
         ],
         /* ['header' => 'Administrador'], */
         [
