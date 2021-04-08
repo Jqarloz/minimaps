@@ -7,11 +7,24 @@ use App\Models\Shop;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Cache;
+
 class ShopController extends Controller
 {
     public function index()
     {
-        $shops = Shop::where('status', 2)->latest('id')->paginate(15);
+        if (request()->page) {
+            $key = 'shops' . request()->page;
+        } else {
+            $key = 'shops';
+        }
+
+        if (Cache::has($key)) {
+            $shops = Cache::get($key);
+        } else {
+            $shops = Shop::where('status', 2)->latest('id')->paginate(15);
+            Cache::put($key, $shops);
+        }
 
         return view('shops.index', compact('shops'));
     }
