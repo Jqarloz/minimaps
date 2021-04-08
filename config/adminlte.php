@@ -249,6 +249,12 @@ return [
             /* 'label'       => 4,
             'label_color' => 'success', */  
         ],
+        [
+            'text'        => 'Roles y Permisos',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            //'can'         => 'admin.roles.index'
+        ],
         /* ['header' => 'Administrador'], */
         [
             'text' => 'Categorías',
