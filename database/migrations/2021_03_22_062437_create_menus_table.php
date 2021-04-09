@@ -18,6 +18,7 @@ class CreateMenusTable extends Migration
 
             $table->string('name');
             $table->integer('status')->default(1);
+            $table->string('route')->nullable();
             $table->timestamps();
         });
     }

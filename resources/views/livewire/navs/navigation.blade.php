@@ -32,9 +32,10 @@
         
         <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
           {{-- Logotipo --}}
-          <a href="/" class="flex-shrink-0 flex items-center">
-            <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
-            <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow">
+          <a href="/" class="flex-shrink-0 flex items-center text-gray-200 font-extrabold font-coms">
+            <img class="block h-8 w-auto mx-1.5" src="https://tailwindui.com/img/logos/workflow-mark-indigo-500.svg" alt="Workflow">
+            {{-- <img class="hidden lg:block h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-indigo-500-mark-white-text.svg" alt="Workflow"> --}}
+            Minimaps
           </a>
           {{-- menu lg --}}
           <div class="hidden sm:block sm:ml-6">
@@ -42,9 +43,9 @@
 
               @foreach ($menus as $menu)
                 @if($menu->status == 1)
-                  <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">{{$menu->name}}</a>
+                  <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">{{$menu->name}}</a>
                 @else
-                  <a href="#" class="text-gray-300 px-3 py-2 rounded-md text-sm text-opacity-40 font-medium">{{$menu->name}}</a>
+                  <a href="{{route($menu->route)}}" class="text-gray-300 px-3 py-2 rounded-md text-sm text-opacity-40 font-medium">{{$menu->name}}</a>
                 @endif
                   
               @endforeach
@@ -104,9 +105,9 @@
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         @foreach ($menus as $menu)
           @if($menu->status == 1)
-            <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{$menu->name}}</a>
+            <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{$menu->name}}</a>
           @else
-            <a href="#" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium text-opacity-40">{{$menu->name}}</a>
+            <a href="{{route($menu->route)}}" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium text-opacity-40">{{$menu->name}}</a>
           @endif
             
         @endforeach

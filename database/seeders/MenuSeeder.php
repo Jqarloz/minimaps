@@ -17,24 +17,28 @@ class MenuSeeder extends Seeder
         Menu::create(
             [
                 'name' => 'Negocios',
+                'route' => 'shops.index',
                 'status' => 1
             ]
         );
         Menu::create(
             [
                 'name' => 'Servicios',
+                'route' => 'shops.index',
                 'status' => 1
             ]
         );
         Menu::create(
             [
                 'name' => 'Tienda',
+                'route' => 'shops.index',
                 'status' => 0
             ]
         );
         Menu::create(
             [
                 'name' => 'Empleos',
+                'route' => 'shops.index',
                 'status' => 0
             ]
         );
