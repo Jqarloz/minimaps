@@ -13,13 +13,15 @@ Route::get('/', function (){
 
 Route::get('/', [ShopController::class, 'index'])->name('shops.index');
 
+Route::get('shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
+
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 
 Route::get('services/{service}', [ServiceController::class, 'show'])->name('services.show');
 
-Route::get('shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
+Route::get('/items', [ServiceController::class, 'index'])->name('items.index');
 
-Route::get('shops/category/{category}', [ShopController::class, 'category'])->name('shops.category');
+Route::get('items/{item}', [ServiceController::class, 'show'])->name('items.show');
 
 Route::get('tags/{tag}', [ShopController::class, 'tag'])->name('shops.tag');
 

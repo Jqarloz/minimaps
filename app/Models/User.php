@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Menus\Item;
 use App\Models\Menus\Service;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -81,6 +82,12 @@ class User extends Authenticatable
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    //Relacion uno a muchos
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 
     public function posts()

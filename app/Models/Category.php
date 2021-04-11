@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Menus\Item;
 use App\Models\Menus\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -29,6 +30,12 @@ class Category extends Model
     public function services()
     {
         return $this->hasMany(Service::class);
+    }
+
+    //Relacion uno a muchos
+    public function items()
+    {
+        return $this->hasMany(Item::class);
     }
 
 }

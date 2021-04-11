@@ -35,4 +35,11 @@ class ImageFactory extends Factory
             'url' => 'services/' . $this->faker->image('public/storage/services', 640,480, null, false)
         ]); 
     }
+
+    public function itemUrl()
+    {
+        return $this->state([
+            'url' => 'items/' . $this->faker->image('public/storage/items', 640,480, null, false)
+        ]); 
+    }
 }
