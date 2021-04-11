@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 
@@ -11,6 +12,10 @@ Route::get('/', function (){
  */
 
 Route::get('/', [ShopController::class, 'index'])->name('shops.index');
+
+Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
+
+Route::get('services/{service}', [ServiceController::class, 'show'])->name('services.show');
 
 Route::get('shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
 

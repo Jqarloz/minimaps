@@ -13,7 +13,7 @@ class ShopController extends Controller
 {
     public function index()
     {
-        if (request()->page) {
+         if (request()->page) {
             $key = 'shops' . request()->page;
         } else {
             $key = 'shops';
@@ -23,9 +23,9 @@ class ShopController extends Controller
             $shops = Cache::get($key);
         } else {
             $shops = Shop::where('status', 2)->latest('id')->paginate(15);
-            Cache::put($key, $shops);
+            Cache::put($key, $shops, $seconds = 60);
         }
-
+        
         return view('shops.index', compact('shops'));
     }
 

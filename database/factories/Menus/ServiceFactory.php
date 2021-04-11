@@ -1,22 +1,21 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Menus;
 
 use App\Models\Category;
-use App\Models\Shop;
+use App\Models\Menus\Service;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-
 use Illuminate\Support\Str;
 
-class ShopFactory extends Factory
+class ServiceFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Shop::class;
+    protected $model = Service::class;
 
     /**
      * Define the model's default state.
@@ -25,7 +24,6 @@ class ShopFactory extends Factory
      */
     public function definition()
     {
-
         $name = $this->faker->unique()->sentence();
 
         return [
@@ -34,7 +32,7 @@ class ShopFactory extends Factory
             'description' => $this->faker->text(250),
             'status' => $this->faker->randomElement([1,2]),
             'user_id' => User::all()->random()->id,
-            'category_id' => Category::where('type','shops')->get()->random()->id
+            'category_id' => Category::where('type','services')->get()->random()->id
         ];
     }
 }

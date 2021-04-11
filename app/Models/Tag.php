@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Menus\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,6 +23,11 @@ class Tag extends Model
     {
         return $this->morphedByMany(Shop::class, 'taggable');
     }
+    public function services()
+    {
+        return $this->morphedByMany(Service::class, 'taggable');
+    }
+
     public function posts()
     {
         return $this->morphedByMany('App\Models\Post', 'taggable');

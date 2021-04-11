@@ -23,12 +23,12 @@ class CategoryFactory extends Factory
     public function definition()
     {
 
-        $name = $this->faker->unique()->word(15);
+        $name = $this->faker->unique()->word(25);
 
         return [
             'name' => $name,
             'slug' => Str::slug($name),
-            'type' => 'Shops'
+            'type' => $this->faker->randomElement(['shops','services','items','jobs'])
         ];
     }
 }

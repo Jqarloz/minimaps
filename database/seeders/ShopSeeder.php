@@ -16,9 +16,13 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        $shops = Shop::factory(300)->create();
+        $shops = Shop::factory(200)->create();
 
         foreach ($shops as $shop) {
+            /* Image::factory(1)->create([
+                'imageable_id' => $shop->id,
+                'imageable_type' => Shop::class
+            ]); */
             Image::factory(1)->create([
                 'imageable_id' => $shop->id,
                 'imageable_type' => Shop::class
