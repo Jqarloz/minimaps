@@ -39,7 +39,7 @@ class MenuSeeder extends Seeder
             [
                 'name' => 'Empleos',
                 'route' => 'jobs.index',
-                'status' => 0
+                'status' => 1
             ]
         );
     }

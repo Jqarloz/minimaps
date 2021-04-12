@@ -28,6 +28,9 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('items');
         Storage::makeDirectory('items');
 
+        Storage::deleteDirectory('jobs');
+        Storage::makeDirectory('jobs');
+
         $this->call(RolSeeder::class);
 
         $this->call(UserSeeder::class);
@@ -38,6 +41,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ShopSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call(ItemSeeder::class);
+        $this->call(JobSeeder::class);
         
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Menus\Item;
+use App\Models\Menus\Job;
 use App\Models\Menus\Service;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -35,6 +36,12 @@ class Tag extends Model
     public function items()
     {
         return $this->morphedByMany(Item::class, 'taggable');
+    }
+
+    //Relacion muchos a muchos inversa polimorfica
+    public function jobs()
+    {
+        return $this->morphedByMany(Job::class, 'taggable');
     }
 
     public function posts()
