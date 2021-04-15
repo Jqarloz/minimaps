@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MiMapa\ServiceController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Admin\TagController;
 use App\Http\Controllers\Admin\UserController;
@@ -19,3 +20,6 @@ Route::resource('categories', CategoryController::class)->except('show')->names(
 Route::resource('tags', TagController::class)->except('show')->names('admin.tags');
 
 Route::resource('shops', ShopController::class)->except('show')->names('admin.shops');
+
+/* Servicios */
+Route::resource('services', ServiceController::class)->except('show')->names('admin.services');

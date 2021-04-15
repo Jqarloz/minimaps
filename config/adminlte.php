@@ -314,7 +314,13 @@ return [
             'text'          => 'Mis Negocios',
             'route'         => 'admin.shops.index',
             'icon'          => 'fas fa-fw fa-store-alt',
-            'can'         => 'admin.shops.index'
+            'can'           => 'admin.shops.index'
+        ],
+        [
+            'text'          => 'Mis Servicios',
+            'route'         => 'admin.services.index',
+            'icon'          => 'fas fa-fw fa-briefcase',
+            'can'           => 'admin.services.index'
         ]
     ],
 

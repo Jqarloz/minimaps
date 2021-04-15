@@ -13,6 +13,11 @@ class Item extends Model
 {
     use HasFactory;
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     //Asignacion Masiva
     protected $guarded = ['id', 'created_at', 'updated_at'];
 

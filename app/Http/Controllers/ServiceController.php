@@ -21,7 +21,7 @@ class ServiceController extends Controller
             $services = Cache::get($key);
         } else {
             $services = Service::where('status', 2)->latest('id')->paginate(15);
-            Cache::put($key, $services, $minutes = 3);
+            Cache::put($key, $services, $seconds = 180);
         }
         
         return view('services.index', compact('services'));

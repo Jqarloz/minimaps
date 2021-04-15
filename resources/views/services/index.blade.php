@@ -2,7 +2,7 @@
     <div class="container bg-gray-300 py-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             @foreach ($services as $service)
-                <article style="background-image: url(@if($service->image) {{Storage::url($service->image->url)}} @else {{Storage::url('default/shop.jpg')}} @endif)" class="w-full h-80 bg-cover bg-center">
+                <article style="background-image: url(@if($service->image) {{Storage::url($service->image->url)}} @else {{Storage::url('default/service.jpg')}} @endif)" class="w-full h-80 bg-cover bg-center">
                     <div class="w-full h-full px-8 flex flex-col justify-center">
                         <div>
                             @foreach ($service->tags as $tag)
