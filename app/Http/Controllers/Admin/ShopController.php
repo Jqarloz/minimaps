@@ -59,7 +59,7 @@ class ShopController extends Controller
             };
         };
         
-        return redirect()->route('admin.shops.edit', $shop);
+        return redirect()->route('admin.shops.index', $shop)->with('info', 'El negocio '. $request->name . ' se creo con éxito.');
     }
 
     public function edit(Shop $shop)
@@ -99,16 +99,16 @@ class ShopController extends Controller
             $shop->tags()->sync($request->tags);
         };
 
-        return redirect()->route('admin.shops.edit',$shop)->with('info', 'El negocio se actualizo con éxito');
+        return redirect()->route('admin.shops.edit',$shop)->with('info', 'El negocio '. $request->name .' se actualizo con éxito');
 
     }
 
     public function destroy(Shop $shop)
     {
         $this->authorize('author', $shop);
-
+        $nombre = $shop->name;
         $shop->delete();
         
-        return redirect()->route('admin.shops.index')->with('info', 'El negocio se elimino con éxito');
+        return redirect()->route('admin.shops.index')->with('info', 'El negocio '. $nombre .' se elimino con éxito');
     }
 }

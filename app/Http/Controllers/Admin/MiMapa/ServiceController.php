@@ -59,7 +59,7 @@ class ServiceController extends Controller
             };
         };
         
-        return redirect()->route('admin.services.edit', $service);
+        return redirect()->route('admin.services.index', $service)->with('info', 'El servicio '. $request->name . ' se creo con éxito.');
     }
 
     public function edit(Service $service)
@@ -99,15 +99,15 @@ class ServiceController extends Controller
             $service->tags()->sync($request->tags);
         };
 
-        return redirect()->route('admin.services.edit',$service)->with('info', 'El servicio se actualizo con éxito');
+        return redirect()->route('admin.services.index',$service)->with('info', 'El servicio '. $request->name .' se actualizo con éxito');
     }
 
     public function destroy(Service $service) /* ServiceObserver se acciona al eliminar, para eliminar imagen. */
     {
         $this->authorize('author', $service);
-
+        $nombre = $service->name;
         $service->delete();
         
-        return redirect()->route('admin.services.index')->with('info', 'El servicio se elimino con éxito');
+        return redirect()->route('admin.services.index')->with('info', 'El servicio '. $nombre .' se elimino con éxito');
     }
 }

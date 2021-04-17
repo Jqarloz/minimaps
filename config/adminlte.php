@@ -242,10 +242,11 @@ return [
             'label_color' => 'success', */  
         ],
         [
-            'text'        => 'Usuarios',
+            'text'          => 'Usuarios',
             'route'         => 'admin.users.index',
-            'icon'        => 'fas fa-fw fa-users',
-            'can'         => 'admin.users.index'
+            'icon'          => 'fas fa-fw fa-users',
+            'active'        => ['admin/users*'],
+            'can'           => 'admin.users.index'
             /* 'label'       => 4,
             'label_color' => 'success', */  
         ],
@@ -253,6 +254,7 @@ return [
             'text'        => 'Roles y Permisos',
             'route'         => 'admin.roles.index',
             'icon'        => 'fas fa-fw fa-users-cog',
+            'active'        => ['admin/roles*', 'admin/permissions*'],
             'can'         => 'admin.roles.index'
         ],
         /* ['header' => 'Administrador'], */
@@ -314,12 +316,14 @@ return [
             'text'          => 'Mis Negocios',
             'route'         => 'admin.shops.index',
             'icon'          => 'fas fa-fw fa-store-alt',
+            'active'        => ['admin/shops*'],
             'can'           => 'admin.shops.index'
         ],
         [
             'text'          => 'Mis Servicios',
             'route'         => 'admin.services.index',
             'icon'          => 'fas fa-fw fa-briefcase',
+            'active'        => ['admin/services*'],
             'can'           => 'admin.services.index'
         ]
     ],

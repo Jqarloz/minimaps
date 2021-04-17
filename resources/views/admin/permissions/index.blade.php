@@ -8,14 +8,10 @@
             <strong>{{session('info')}}</strong>
         </div>
     @endif
-
-    @can('admin.roles.create')
-        <a class="btn btn-success float-right" href="{{route('admin.roles.create')}}">Nuevo Rol</a>
+    @can('admin.permissions.create')
+        <a class="btn btn-success float-right" href="{{route('admin.permissions.create')}}">Nuevo Permiso</a>
     @endcan
-    @can('admin.permissions.index')
-        <a class="btn btn-primary mr-2 float-right" href="{{route('admin.permissions.index')}}">Permisos</a>
-    @endcan
-    <h1>Roles Inicio</h1>
+    <h1>Permisos Inicio</h1>
 @stop
 
 @section('content')
@@ -24,24 +20,24 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>Nombre</th>
+                        <th>Descripción</th>
                         <th colspan="2"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($roles as $role)
+                    @foreach ($permissions as $permission)
                         <tr>
-                            <td>{{$role->id}}</td>
-                            <td>{{$role->name}}</td>
+                            <td>{{$permission->name}}</td>
+                            <td>{{$permission->description}}</td>
                             <td width="10px">
-                                @can('admin.roles.edit')
-                                    <a href="{{route('admin.roles.edit', $role)}}" class="btn btn-primary btn-sm">Editar</a>                                    
+                                @can('admin.permissions.edit')
+                                    <a href="{{route('admin.permissions.edit', $permission)}}" class="btn btn-primary btn-sm">Editar</a>                                    
                                 @endcan
                             </td>
                             <td width="10px">
-                                @can('admin.roles.destroy')
-                                    <form action="{{route('admin.roles.destroy', $role)}}" method="POST">
+                                @can('admin.permissions.destroy')
+                                    <form action="{{route('admin.permissions.destroy', $permission)}}" method="POST">
                                         @csrf
                                         @method('delete')
 
@@ -56,11 +52,3 @@
         </div>
     </div>
 @stop
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-@stop
-
-@section('js')
-    <script> console.log('Hi!'); </script>
-@stop  
