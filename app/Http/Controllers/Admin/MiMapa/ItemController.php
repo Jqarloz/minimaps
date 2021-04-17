@@ -58,7 +58,7 @@ class ItemController extends Controller
             };
         };
         
-        return redirect()->route('admin.items.index', $item)->with('info', 'El artículo '. $request->name . ' se creo con éxito en la tienda.');
+        return redirect()->route('admin.items.index')->with('info', 'El artículo '. $request->name . ' se creo con éxito en la tienda.');
     }
 
     public function edit(Item $item)
@@ -98,7 +98,7 @@ class ItemController extends Controller
             $item->tags()->sync($request->tags);
         };
 
-        return redirect()->route('admin.items.index',$item)->with('info', 'El artículo '. $request->name .' se actualizo con éxito en la tienda.');
+        return redirect()->route('admin.items.index')->with('info', 'El artículo '. $request->name .' se actualizo con éxito en la tienda.');
     }
 
     public function destroy(Item $item) /* Usa ItemObserver para eliminar archivo */

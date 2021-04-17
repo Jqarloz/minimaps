@@ -4,9 +4,8 @@ namespace App\Http\Requests\Admin\MiMapa;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ServiceRequest extends FormRequest
+class JobRequest extends FormRequest
 {
-    
     public function authorize()
     {
         return true; /* el authorize se hace con el policy y middelware */
@@ -15,17 +14,17 @@ class ServiceRequest extends FormRequest
     
     public function rules()
     {
-        $service = $this->route()->parameter('service');
+        $job = $this->route()->parameter('job');
 
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:services',
+            'slug' => 'required|unique:jobs',
             'status' => 'required|in:1,2,3,4,5',
             'file'  => 'image'
         ];
 
-        if ($service) {
-            $rules['slug'] = 'required|unique:services,slug,' . $service->id;
+        if ($job) {
+            $rules['slug'] = 'required|unique:jobs,slug,' . $job->id;
         }
 
         if ($this->status == 2) {

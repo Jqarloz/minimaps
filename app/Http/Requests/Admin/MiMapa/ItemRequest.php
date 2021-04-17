@@ -18,13 +18,13 @@ class ItemRequest extends FormRequest
 
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:shops',
+            'slug' => 'required|unique:items',
             'status' => 'required|in:1,2,3,4,5',
             'file'  => 'image'
         ];
 
         if ($item) {
-            $rules['slug'] = 'required|unique:shops,slug,' . $item->id;
+            $rules['slug'] = 'required|unique:items,slug,' . $item->id;
         }
 
         if ($this->status == 2) {

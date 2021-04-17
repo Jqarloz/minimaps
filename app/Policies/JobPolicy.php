@@ -10,6 +10,15 @@ class JobPolicy
 {
     use HandlesAuthorization;
 
+    public function author(User $user, Job $job) /* Metodo utilizado en controller Admin/ServiceController.edit */
+    {
+        if ($user->id == $job->user_id) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function published(?User $user, Job $job)
     {
         if ($job->status == 2) {

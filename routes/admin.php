@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MiMapa\ItemController;
+use App\Http\Controllers\Admin\MiMapa\JobController;
 use App\Http\Controllers\Admin\MiMapa\ServiceController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ShopController;
@@ -31,3 +32,5 @@ Route::resource('services', ServiceController::class)->except('show')->names('ad
 /* Items */
 Route::resource('items', ItemController::class)->except('show')->names('admin.items');
 
+/* Jobs */
+Route::resource('jobs', JobController::class)->except('show')->names('admin.jobs');
