@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MiMapa\ItemController;
 use App\Http\Controllers\Admin\MiMapa\ServiceController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\ShopController;
@@ -26,4 +27,7 @@ Route::resource('shops', ShopController::class)->except('show')->names('admin.sh
 
 /* Servicios */
 Route::resource('services', ServiceController::class)->except('show')->names('admin.services');
+
+/* Items */
+Route::resource('items', ItemController::class)->except('show')->names('admin.items');
 

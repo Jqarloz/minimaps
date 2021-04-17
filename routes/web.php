@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -21,8 +22,8 @@ Route::get('/services', [ServiceController::class, 'index'])->name('services.ind
 Route::get('services/{service}', [ServiceController::class, 'show'])->name('services.show');
 
 /* Tienda */
-Route::get('/items', [ServiceController::class, 'index'])->name('items.index');
-Route::get('items/{item}', [ServiceController::class, 'show'])->name('items.show');
+Route::get('/items', [ItemController::class, 'index'])->name('items.index');
+Route::get('items/{item}', [ItemController::class, 'show'])->name('items.show');
 
 /* Trabajos */
 Route::get('/jobs', [JobController::class, 'index'])->name('jobs.index');

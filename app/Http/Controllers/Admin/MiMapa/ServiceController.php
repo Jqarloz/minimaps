@@ -40,7 +40,7 @@ class ServiceController extends Controller
         $service = Service::create($request->all());
 
         if ($request->file('file')) {
-            $url = Storage::put('shops', $request->file('file'));
+            $url = Storage::put('services', $request->file('file'));
 
             $service->image()->create([
                 'url' => $url

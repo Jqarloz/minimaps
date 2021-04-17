@@ -325,6 +325,20 @@ return [
             'icon'          => 'fas fa-fw fa-briefcase',
             'active'        => ['admin/services*'],
             'can'           => 'admin.services.index'
+        ],
+        [
+            'text'          => 'Mi Tienda',
+            'route'         => 'admin.items.index',
+            'icon'          => 'fas fa-fw fa-shopping-basket',
+            'active'        => ['admin/items*'],
+            'can'           => 'admin.items.index'
+        ],
+        [
+            'text'          => 'Mis Contrataciones',
+            'route'         => 'admin.jobs.index',
+            'icon'          => 'fas fa-fw fa-user-tie',
+            'active'        => ['admin/jobs*'],
+            'can'           => 'admin.jobs.index'
         ]
     ],
 
