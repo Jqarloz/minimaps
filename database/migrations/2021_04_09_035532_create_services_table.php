@@ -22,14 +22,14 @@ class CreateServicesTable extends Migration
             $table->integer('status')->default(1);
 
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('category_id');
+            $table->unsignedBigInteger('category_id')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
             
             $table->foreign('category_id')->references('id')->on('categories')
-                    ->onDelete('cascade')
+                    ->onDelete('set null')
                     ->onUpdate('cascade');
 
 
