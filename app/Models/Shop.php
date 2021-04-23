@@ -43,4 +43,10 @@ class Shop extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    //Relacion 1 a Muchos Polimorfica
+    public function reviews()
+    {
+        return $this->morphMany(Review::class, 'reviewable');
+    }
+
 }
