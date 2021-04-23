@@ -4,6 +4,7 @@ namespace App\Models\Menus;
 
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\Reaction;
 use App\Models\Review;
 use App\Models\Tag;
 use App\Models\User;
@@ -48,6 +49,11 @@ class Item extends Model
     public function reviews()
     {
         return $this->morphMany(Review::class, 'reviewable');
+    }
+
+    public function reactions()
+    {
+        return $this->morphMany(Reaction::class, 'reactionable');
     }
     
 }

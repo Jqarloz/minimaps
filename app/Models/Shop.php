@@ -49,4 +49,9 @@ class Shop extends Model
         return $this->morphMany(Review::class, 'reviewable');
     }
 
+    public function reactions()
+    {
+        return $this->morphMany(Reaction::class, 'reactionable');
+    }
+
 }
