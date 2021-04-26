@@ -22,7 +22,7 @@ class CreateReactionsTable extends Migration
             $table->unsignedBigInteger('reactionable_id');
             $table->string('reactionable_type');
 
-            $table->foreign('user_id')->references('user_id')->on('users')
+            $table->foreign('user_id')->references('id')->on('users')
                     ->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();

@@ -23,6 +23,18 @@ class Job extends Model
     //Asignacion Masiva
     protected $guarded = ['id', 'created_at', 'updated_at'];
 
+    //Metodo para rating
+    protected $withCount = ['reactions', 'reviews'];
+
+    public function getRatingAttribute()
+    {
+        if($this->reviews_count){
+            return round($this->reviews->avg('rating'), 1);
+        }else {
+            return 5;
+        }
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

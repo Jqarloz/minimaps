@@ -14,10 +14,20 @@ class Shop extends Model
     use HasFactory;
 
     protected $guarded = ['id', 'created_at', 'updated_at'];
+    protected $withCount = ['reactions', 'reviews'];
 
     public function getRouteKeyName()
     {
         return 'slug';
+    }
+
+    public function getRatingAttribute()
+    {
+        if($this->reviews_count){
+            return round($this->reviews->avg('rating'), 1);
+        }else {
+            return 5;
+        }
     }
 
     //Relacion uno a muchos (inversa)

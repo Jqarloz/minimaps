@@ -12,6 +12,7 @@
                         <h1 class="text-white leading-8 font-bold mt-2">
                             <a href="{{route('shops.show', $shop)}}">{{$shop->name}}</a>
                         </h1>
+                        <p>{{$shop->rating}}</p>
                     </div>
                 </article>
             @endforeach
