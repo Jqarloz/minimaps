@@ -7,14 +7,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ShopController;
 
 
-/* 
+/* HOME */
 Route::get('/', function (){
     return view('welcome');
 })->name('home');
- */
 
  /* Negocios */
-Route::get('/', [ShopController::class, 'index'])->name('shops.index');
+Route::get('/shops', [ShopController::class, 'index'])->name('shops.index');
 Route::get('shops/{shop}', [ShopController::class, 'show'])->name('shops.show');
 
 /* Servicios */

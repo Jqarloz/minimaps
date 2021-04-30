@@ -11,7 +11,7 @@ class ServiceController extends Controller
 {
     public function index()
     {
-         if (request()->page) {
+        if (request()->page) {
             $key = 'services' . request()->page;
         } else {
             $key = 'services';
@@ -22,7 +22,7 @@ class ServiceController extends Controller
         } else {
             $services = Service::where('status', 2)->latest('id')->paginate(15);
             Cache::put($key, $services, $seconds = 180);
-        }
+        } 
         
         return view('services.index', compact('services'));
     }

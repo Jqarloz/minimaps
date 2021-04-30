@@ -1,4 +1,5 @@
-<nav x-data="{open : false}" class="bg-gray-800">
+<div class="py-8">
+<nav x-data="{open : false}" class="bg-gray-800 fixed w-full top-0 inset-x-0">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         
@@ -43,7 +44,14 @@
 
               @foreach ($menus as $menu)
                 @if($menu->status == 1)
-                  <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">{{$menu->name}}</a>
+                  @php
+                    $statusLink = request()->routeIs($menu->route)
+                  @endphp
+                  @if ($statusLink == 1)
+                    <a href="{{route($menu->route)}}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">{{$menu->name}}</a>
+                  @else
+                    <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">{{$menu->name}}</a>    
+                  @endif
                 @else
                   <a href="#" class="text-gray-300 px-3 py-2 rounded-md text-sm text-opacity-40 font-medium">{{$menu->name}}</a>
                 @endif
@@ -91,21 +99,51 @@
             </div>
           </div>
         @else
-          <a href="{{ route('login') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Iniciar Sesión</a>
-          <a href="{{ route('register') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Registrar</a>
+          <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <!-- Profile dropdown -->
+            <div x-data="{open : false}" class="ml-3 relative">
+              <div>
+                <button x-on:click="open = true" type="button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" id="user-menu" aria-expanded="false" aria-haspopup="true">
+                  <span class="sr-only">Open user menu</span>
+                  <i class="fas fa-user text-gray-400 text-xl rounded-full py-1.5 px-1.5 border-2 border-white border-double"></i>
+                </button>
+              </div>
+              <div x-show="open" x-on:click.away="open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
+                <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Iniciar Sesión</a>
+                <a href="{{ route('register') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Registrar</a>
+                @can('admin.home')
+                  {{-- ejemplo de rol --}}
+                @endcan
+              </div>
+            </div>
+          </div>
         @endauth
-        
-
       </div>
     </div>
   
     <!-- Mobile menu. -->
     <div x-show="open" x-on:click.away="open=false" class="sm:hidden" id="mobile-menu">
       <div class="px-2 pt-2 pb-3 space-y-1">
+          @php
+            $statusLinkHome = request()->routeIs('home')
+          @endphp
+          @if ($statusLinkHome == 1)
+            <a href="{{route('home')}}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>
+          @else
+            <a href="{{route('home')}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Inicio</a>    
+          @endif
+          <div class="border mx-8"></div>
         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
         @foreach ($menus as $menu)
           @if($menu->status == 1)
-            <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{$menu->name}}</a>
+            @php
+              $statusLink = request()->routeIs($menu->route)
+            @endphp
+            @if ($statusLink == 1)
+              <a href="{{route($menu->route)}}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium">{{$menu->name}}</a>
+            @else
+              <a href="{{route($menu->route)}}" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">{{$menu->name}}</a>    
+            @endif
           @else
             <a href="#" class="text-gray-300 block px-3 py-2 rounded-md text-base font-medium text-opacity-40">{{$menu->name}}</a>
           @endif
@@ -116,4 +154,4 @@
     </div>
 
   </nav>
-  
+</div>
