@@ -39,6 +39,12 @@ class Shop extends Model
         }
     }
 
+    //Relacion 1 a muchos
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
     //Relacion uno a muchos (inversa)
     public function user()
     {
@@ -60,6 +66,11 @@ class Shop extends Model
     public function image()
     {
         return $this->morphOne(Image::class, 'imageable');
+    }
+
+    public function location()
+    {
+        return $this->morphOne(Location::class, 'locationable');
     }
 
     //Relacion 1 a Muchos Polimorfica

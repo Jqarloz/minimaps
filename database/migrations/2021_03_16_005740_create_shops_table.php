@@ -23,12 +23,26 @@ class CreateShopsTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('location_id')->nullable();
+
+            $table->string('home_service',2)->nullable();
+            $table->string('hs_isfree',2)->nullable();
+            $table->double('hs_mincost',8,2)->nullable();
+            $table->double('hs_maxcost',8,2)->nullable();
+            $table->string('website')->nullable();
+            $table->string('hour_always',2)->nullable();
+            $table->string('hour_open')->nullable();
+            $table->string('hour_close')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')
                     ->onDelete('cascade')
                     ->onUpdate('cascade');
             
             $table->foreign('category_id')->references('id')->on('categories')
+                    ->onDelete('set null')
+                    ->onUpdate('cascade');
+            
+            $table->foreign('location_id')->references('id')->on('locations')
                     ->onDelete('set null')
                     ->onUpdate('cascade');
 
