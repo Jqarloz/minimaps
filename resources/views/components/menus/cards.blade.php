@@ -1,9 +1,9 @@
 @props(['shop'])
-<article class="bg-white shadow-lg rounded overflow-hidden">
+<article class="card">
     <img class="h-36 w-full object-cover" src="@if($shop->image) {{Storage::url($shop->image->url)}} @else {{Storage::url('default/shop.jpg')}} @endif" alt="">
     
-    <div class="px-6 py-4">
-        <h1 class="text-xl text-gray-700 mb-2 leading-6">{{Str::limit($shop->name, 40, '...')}}</h1>
+    <div class="card-body">
+        <h1 class="card-tittle">{{Str::limit($shop->name, 40, '...')}}</h1>
         <p class="text-gray-500 text-sm mb-2">{{$shop->category->name}}</p>
 
         <div class="flex">
@@ -20,7 +20,7 @@
             </p>
         </div>
 
-        <a href="{{route('shops.show',$shop)}}" class="block text-center w-full mt-4 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-opacity-75">
+        <a href="{{route('shops.show',$shop)}}" class="mt-4 btn btn-primary btn-block">
             Mas Información    
         </a>
     </div>

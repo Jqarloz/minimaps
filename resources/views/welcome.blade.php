@@ -2,10 +2,10 @@
     
     {{-- Slider --}}
     <section class="bg-cover" style="background-image: url({{asset('img/home/home_01.jpg')}})">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-36">
+        <div class="container py-36">
             <div class="w-full md:w-3/4 lg:w-1/2">
-                <h1 class="text-white font-bold text-4xl">Welcome to Minimaps</h1>
-                <p class="text-white text-lg mt-2 mb-4">Potencia tu negocio! haz que todos los dias personas nuevas lo conoscan.</p>
+                <h1 class="text-white font-bold text-4xl text-shadow-black ">Welcome to Minimaps</h1>
+                <p class="text-white text-lg mt-2 mb-4 text-shadow-black">Potencia tu negocio! haz que todos los dias personas nuevas lo conoscan.</p>
                 <!-- component -->
                 <!-- This is an example component -->
                 <div class="pt-2 relative mx-auto text-gray-600">

@@ -5,6 +5,7 @@
 
 /* @import 'estilos.css'; */
 @import 'common.css';
+@import 'buttons.css';
 
 h1{
     @apply font-sans text-3xl font-bold;

@@ -45,7 +45,7 @@
               @foreach ($menus as $menu)
                 @if($menu->status == 1)
                   @php
-                    $statusLink = request()->routeIs($menu->route)
+                    $statusLink = request()->routeIs(str_replace('index', '*', $menu->route))
                   @endphp
                   @if ($statusLink == 1)
                     <a href="{{route($menu->route)}}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium">{{$menu->name}}</a>
