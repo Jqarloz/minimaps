@@ -23,7 +23,7 @@ class CreateShopsTable extends Migration
 
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->unsignedBigInteger('location_id')->nullable();
+            /* $table->unsignedBigInteger('location_id')->nullable(); */
 
             $table->string('home_service',2)->nullable();
             $table->string('hs_isfree',2)->nullable();
@@ -42,9 +42,9 @@ class CreateShopsTable extends Migration
                     ->onDelete('set null')
                     ->onUpdate('cascade');
             
-            $table->foreign('location_id')->references('id')->on('locations')
+            /* $table->foreign('location_id')->references('id')->on('locations')
                     ->onDelete('set null')
-                    ->onUpdate('cascade');
+                    ->onUpdate('cascade'); */
 
             $table->timestamps();
         });

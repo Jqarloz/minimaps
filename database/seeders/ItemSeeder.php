@@ -15,7 +15,7 @@ class ItemSeeder extends Seeder
      */
     public function run()
     {
-        $items = Item::factory(200)->create();
+        $items = Item::factory(150)->create();
 
         foreach ($items as $item) {
             Image::factory(1)->itemUrl()->create([

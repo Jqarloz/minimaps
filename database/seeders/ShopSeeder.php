@@ -2,7 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use App\Models\Image;
+use App\Models\Location;
+use App\Models\Network;
+use App\Models\Product;
 use Illuminate\Database\Seeder;
 
 use App\Models\Shop;
@@ -16,7 +20,7 @@ class ShopSeeder extends Seeder
      */
     public function run()
     {
-        $shops = Shop::factory(200)->create();
+        $shops = Shop::factory(100)->create();
 
         foreach ($shops as $shop) {
             /* Image::factory(1)->create([
@@ -27,6 +31,37 @@ class ShopSeeder extends Seeder
                 'imageable_id' => $shop->id,
                 'imageable_type' => Shop::class
             ]);
+
+            Location::factory(1)->create([
+                'locationable_id' => $shop->id,
+                'locationable_type' => Shop::class
+            ]);
+
+            Product::factory(3)->create([
+                'shop_id' => $shop->id
+            ]);
+
+            Contact::factory(3)->create([
+                'contactable_id' => $shop->id,
+                'contactable_type' => Shop::class
+            ]);
+
+            Network::factory(1)->create([
+                'networkable_id' => $shop->id,
+                'networkable_type' => Shop::class,
+                'type' => 'facebook'
+            ]);
+            Network::factory(1)->create([
+                'networkable_id' => $shop->id,
+                'networkable_type' => Shop::class,
+                'type' => 'instagram'
+            ]);
+            Network::factory(1)->create([
+                'networkable_id' => $shop->id,
+                'networkable_type' => Shop::class,
+                'type' => 'twitter'
+            ]);
+
 
             $shop->tags()->attach(
                 rand(1,6),

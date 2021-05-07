@@ -15,7 +15,7 @@ class ServiceSeeder extends Seeder
      */
     public function run()
     {
-        $services = Service::factory(200)->create();
+        $services = Service::factory(50)->create();
 
         foreach ($services as $service) {
             Image::factory(1)->serviceUrl()->create([

@@ -84,4 +84,14 @@ class Shop extends Model
         return $this->morphMany(Reaction::class, 'reactionable');
     }
 
+    public function contacts()
+    {
+        return $this->morphMany(Contact::class, 'contactable');
+    }
+
+    public function networks()
+    {
+        return $this->morphMany(Network::class, 'networkable');
+    }
+
 }
