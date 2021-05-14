@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Network;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class NetworkFactory extends Factory
 {
@@ -22,7 +23,7 @@ class NetworkFactory extends Factory
     public function definition()
     {
         return [
-            'url' => $this->faker->url()
+            'url' => Str::slug($this->faker->sentence()) 
         ];
     }
 }

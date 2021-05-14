@@ -62,6 +62,24 @@ class ShopSeeder extends Seeder
                 'type' => 'twitter'
             ]);
 
+            Network::factory(1)->create([
+                'networkable_id' => $shop->id,
+                'networkable_type' => Shop::class,
+                'type' => 'tiktok'
+            ]);
+
+            Network::factory(1)->create([
+                'networkable_id' => $shop->id,
+                'networkable_type' => Shop::class,
+                'type' => 'linkedin'
+            ]);
+
+            Network::factory(1)->create([
+                'networkable_id' => $shop->id,
+                'networkable_type' => Shop::class,
+                'type' => 'youtube'
+            ]);
+
 
             $shop->tags()->attach(
                 rand(1,6),

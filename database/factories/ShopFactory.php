@@ -34,7 +34,15 @@ class ShopFactory extends Factory
             'description' => $this->faker->text(250),
             'status' => $this->faker->randomElement([1,2]),
             'user_id' => User::all()->random()->id,
-            'category_id' => Category::where('type','shops')->get()->random()->id
+            'category_id' => Category::where('type','shops')->get()->random()->id,
+            'home_service' => $this->faker->randomElement(['Y','N']),
+            'hs_isfree' => $this->faker->randomElement(['Y', 'N']),
+            'hs_mincost' => $this->faker->randomFloat(2,10,100),
+            'hs_maxcost' => $this->faker->randomElement([null, $this->faker->randomFloat(2,101,350)]),
+            'website' => $this->faker->url(),
+            'hour_always' => $this->faker->randomElement(['Y', 'N']),
+            'hour_open' => $this->faker->time('H:i:s'),
+            'hour_close' => $this->faker->time('H:i:s')
         ];
     }
 }
