@@ -52,6 +52,11 @@ class Item extends Model
         return $this->morphToMany(Tag::class, 'taggable');
     }
 
+    public function media()
+    {
+        return $this->morphToMany('App\Models\Mediable', 'mediable');
+    }
+
     //Relacion 1 a 1 polimorfica
     public function image()
     {
