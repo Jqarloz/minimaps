@@ -1,4 +1,7 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/fortawesome/attribution.js": "/fortawesome/attribution.js",
+    "/fortawesome/LICENSE.txt": "/fortawesome/LICENSE.txt",
+    "/fortawesome/package.json": "/fortawesome/package.json"
 }

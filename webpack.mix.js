@@ -18,6 +18,8 @@ mix.js('resources/js/app.js', 'public/js')
         require('autoprefixer'),
     ]);
 
+mix.copy('node_modules/@fortawesome/fontawesome-free/', 'public/fortawesome')
+
 if (mix.inProduction()) {
     mix.version();
 }
