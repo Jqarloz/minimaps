@@ -62,11 +62,6 @@ class Shop extends Model
         return $this->morphToMany('App\Models\Tag', 'taggable');
     }
 
-    public function media()
-    {
-        return $this->morphToMany('App\Models\Mediable', 'mediable');
-    }
-
     //Relacion 1 a 1 polimorfica
     public function image()
     {

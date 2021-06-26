@@ -28,7 +28,7 @@ class ProductFactory extends Factory
             'slug' => Str::slug($name),
             'price' => $this->faker->randomFloat(2,10,2500),
             'description' => $this->faker->text(200),
-            'image' => $this->faker->url()
+            'image' => 'media/shops/products/' . $this->faker->image('public/storage/media/shops/products', 170,170, null, false)
         ];
     }
 }

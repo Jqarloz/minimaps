@@ -46,9 +46,11 @@
         </div>
     </section>
 
-    <div class="container grid grid-cols-2">
+    {{-- Contenido del negocio --}}
+    <div class="container grid grid-cols-2 mb-8">
 
-        <div class="col-span-2 mb-8">
+        {{-- Descripcion --}}
+        <div class="col-span-2 mb-4">
             <section class="card">
                 <div class="card-body">
                     <h1 class="font-bold mb-2 text-2xl">Acerca de {{$shop->name}}</h1>
@@ -56,10 +58,43 @@
                 </div>
             </section>
         </div>
-        
+
+        {{-- Productos Principales --}}
         <div class="col-span-2">
             <section class="mt-4">
-                <article class="mb-4 shadow" x-data="{ open: true }">
+                <article class="mb-4 shadow" x-data="{ open: false }">
+                    <header class="border border-gray-200 px-4 py-2 cursor-pointer bg-gray-200 flex" x-on:click="open = !open">
+                        <template x-if="open">
+                            <i class="fas fa-chevron-right font-bold text-lg"></i>
+                        </template>
+                        <template x-if="!open">
+                            <i class="fas fa-chevron-down font-bold text-lg"></i>
+                        </template>
+                        <h1 class="font-bold text-lg text-gray-800 ml-4">Productos principales</h1>
+                    </header>
+                    <div class="bg-white py-2 px-4" x-show="open">
+                        <div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
+                                @foreach ($shop->products as $product)
+                                    <article class="card">
+                                        <img class="h-36 w-full object-cover" src="@if($product->image) {{Storage::url($product->image)}} @else {{Storage::url('default/products.jpg')}} @endif" alt="">
+                                        <div class="card-body">
+                                            <h1 class="card-tittle">{{$product->name}}</h1>
+                                            <p class="text-gray-500 text-sm mb-2">${{$product->price}}</p>
+                                        </div>
+                                    </article>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </section> 
+        </div> 
+        
+        {{-- Redes Sociales--}}
+        <div class="col-span-2">
+            <section class="mt-4">
+                <article class="mb-4 shadow" x-data="{ open: false }">
                     <header class="border border-gray-200 px-4 py-2 cursor-pointer bg-gray-200 flex" x-on:click="open = !open">
                         <template x-if="open">
                             <i class="fas fa-chevron-right font-bold text-lg"></i>
@@ -103,7 +138,10 @@
                     
                 </article>
             </section>    
+        </div>
 
+        {{-- Contacto --}}
+        <div class="col-span-2">
             <section class="mt-4">
                 <article class="mb-4 shadow" x-data="{ open: false }">
                     <header class="border border-gray-200 px-4 py-2 cursor-pointer bg-gray-200 flex" x-on:click="open = !open">
@@ -136,9 +174,12 @@
                     
                 </article>
             </section>    
+        </div>
 
+        {{-- Ubicacion --}}
+        <div class="col-span-2">
             <section class="mt-4">
-                <article class="mb-4 shadow" x-data="{ open: true }">
+                <article class="mb-4 shadow" x-data="{ open: false }">
                     <header class="border border-gray-200 px-4 py-2 cursor-pointer bg-gray-200 flex" x-on:click="open = !open">
                         <template x-if="open">
                             <i class="fas fa-chevron-right font-bold text-lg"></i>
@@ -171,9 +212,36 @@
                     </div>
                     
                 </article>
-            </section>    
-            
+            </section> 
         </div>
+
     </div>
+
+    {{-- Seccion de comentarios --}}
+    <section class="bg-gray-700 py-12 mb-8">
+        <div class="container">
+            <h1 class="text-3xl font-bold text-white">Comentarios</h1>
+        </div>
+    </section>
+
+    {{-- Negocios Similares --}}
+    <section class="mb-8 hidden lg:block">
+        <div class="container">
+            <aside>
+                @foreach ($similares as $similar)
+                    <article class="flex mb-6 items-center">
+                        <img class="h-32 w-40 object-cover" src="{{Storage::url($similar->image->url)}}" alt="">
+                        <div class="ml-3">
+                            <h1 class="mb-2">
+                                <a class="font-bold text-gray-700 mb-4" href="{{route('shops.show', $similar)}}">{{Str::limit($similar->name, 35)}}</a>
+                            </h1>
+                            <p class="text-base font-semibold text-gray-700">{{$similar->category->name}}</p>
+                            <p class="text-sm text-gray-500"><i class="fas fa-star mr-2 text-yellow-400"></i>{{$similar->rating}}</p>
+                        </div>
+                    </article>                    
+                @endforeach
+            </aside>
+        </div>
+    </section>
 
 </x-app-layout>

@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Contact;
 use App\Models\Image;
 use App\Models\Location;
+use App\Models\Mediable;
 use App\Models\Network;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
@@ -31,6 +32,11 @@ class ShopSeeder extends Seeder
                 'imageable_id' => $shop->id,
                 'imageable_type' => Shop::class
             ]);
+
+            /* Mediable::factory(5)->create([
+                'imageable_id' => $shop->id,
+                'imageable_type' => Shop::class
+            ]); */
 
             Location::factory(1)->create([
                 'locationable_id' => $shop->id,

@@ -31,6 +31,17 @@ class DatabaseSeeder extends Seeder
         Storage::deleteDirectory('jobs');
         Storage::makeDirectory('jobs');
 
+        Storage::deleteDirectory('media/shops/products');
+        Storage::deleteDirectory('media/services/products');
+        Storage::deleteDirectory('media/jobs/products');
+        Storage::deleteDirectory('media/items/products');
+        Storage::deleteDirectory('media');
+        Storage::makeDirectory('media/shops/products');
+        Storage::makeDirectory('media/services/products');
+        Storage::makeDirectory('media/jobs/products');
+        Storage::makeDirectory('media/items/products');
+
+
         $this->call(RolSeeder::class);
 
         $this->call(UserSeeder::class);
