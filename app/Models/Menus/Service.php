@@ -26,6 +26,15 @@ class Service extends Model
     //Metodo para rating
     protected $withCount = ['reactions', 'reviews'];
 
+    //Query Scope
+
+    public function scopeCategory($query, $category_id)
+    {
+        if ($category_id) {
+            return $query->where('category_id', $category_id);
+        }         
+    }
+
     public function getRatingAttribute()
     {
         if($this->reviews_count){
