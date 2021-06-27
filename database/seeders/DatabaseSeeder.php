@@ -49,6 +49,7 @@ class DatabaseSeeder extends Seeder
         Tag::factory(12)->create();
         //Menu::factory(4)->create();
         $this->call(MenuSeeder::class);
+        $this->call(CategorySeeder::class);
         $this->call(ShopSeeder::class);
         $this->call(ServiceSeeder::class);
         $this->call(ItemSeeder::class);

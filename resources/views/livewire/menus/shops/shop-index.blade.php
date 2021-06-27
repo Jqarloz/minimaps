@@ -12,7 +12,7 @@
                     <i class="fas fa-angle-down text-sm ml-2"></i>
                 </button>
                 <!-- Dropdown Body -->
-                <div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl" x-show="open" x-on:click.away="open = false">   
+                <div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded shadow-xl overflow-auto h-72" x-show="open" x-on:click.away="open = false">   
                     @foreach ($categories as $category)
                         <a wire:click="$set('category_id',{{$category->id}})" x-on:click="open = false" class="cursor-pointer transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-blue-500 hover:text-white">{{$category->name}}</a>
                     @endforeach

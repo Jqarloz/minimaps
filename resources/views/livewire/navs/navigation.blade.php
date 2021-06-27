@@ -1,5 +1,5 @@
 <div class="py-8">
-<nav x-data="{open : false}" class="bg-gray-800 fixed w-full top-0 inset-x-0">
+<nav x-data="{open : false}" class="bg-gray-800 fixed w-full top-0 inset-x-0 z-50">
     <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex items-center justify-between h-16">
         

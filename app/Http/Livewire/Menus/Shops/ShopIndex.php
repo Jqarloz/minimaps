@@ -17,7 +17,7 @@ class ShopIndex extends Component
 
     public function render()
     {
-        $categories = Category::all();
+        $categories = Category::where('type', 'shops')->orderby('name')->get();
 
         /* if (request()->page) {
             $key = 'shops' . request()->page;
