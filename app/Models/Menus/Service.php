@@ -57,6 +57,11 @@ class Service extends Model
         return $this->morphOne(Image::class, 'imageable');
     }
 
+    public function location()
+    {
+        return $this->morphOne(Location::class, 'locationable');
+    }
+
     //Relacion 1 a Muchos Polimorfica
     public function reviews()
     {
