@@ -1,16 +1,5 @@
 <x-app-layout>
 
-    {{-- GEOLOCALIZACION SCRIPT --}}
-    <script>
-        function setloc(){
-
-            document.getElementById('latitude').value= 'latitud';
-            document.getElementById('longitude').value= 'longitud';  
-
-        }   
-    </script>
-
-
     <section class="bg-gray-700 py-12 mb-12">
         <div class="container grid grid-cols-1 lg:grid-cols-2 gap-6">
             <figure>
