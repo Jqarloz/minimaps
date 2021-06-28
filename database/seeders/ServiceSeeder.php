@@ -2,8 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Contact;
 use App\Models\Image;
+use App\Models\Location;
 use App\Models\Menus\Service;
+use App\Models\Network;
 use Illuminate\Database\Seeder;
 
 class ServiceSeeder extends Seeder
@@ -21,6 +24,53 @@ class ServiceSeeder extends Seeder
             Image::factory(1)->serviceUrl()->create([
                 'imageable_id' => $service->id,
                 'imageable_type' => Service::class
+            ]);
+
+            /* Datos de contacto */
+            Contact::factory(3)->create([
+                'contactable_id' => $service->id,
+                'contactable_type' => Service::class
+            ]);
+
+            /* Datos de localizacion */
+            Location::factory(1)->create([
+                'locationable_id' => $service->id,
+                'locationable_type' => Service::class
+            ]);
+
+            /* Datos de redes sociales */
+            Network::factory(1)->create([
+                'networkable_id' => $service->id,
+                'networkable_type' => Service::class,
+                'type' => 'facebook'
+            ]);
+            Network::factory(1)->create([
+                'networkable_id' => $service->id,
+                'networkable_type' => Service::class,
+                'type' => 'instagram'
+            ]);
+            Network::factory(1)->create([
+                'networkable_id' => $service->id,
+                'networkable_type' => Service::class,
+                'type' => 'twitter'
+            ]);
+
+            Network::factory(1)->create([
+                'networkable_id' => $service->id,
+                'networkable_type' => Service::class,
+                'type' => 'tiktok'
+            ]);
+
+            Network::factory(1)->create([
+                'networkable_id' => $service->id,
+                'networkable_type' => Service::class,
+                'type' => 'linkedin'
+            ]);
+
+            Network::factory(1)->create([
+                'networkable_id' => $service->id,
+                'networkable_type' => Service::class,
+                'type' => 'youtube'
             ]);
 
             $service->tags()->attach(

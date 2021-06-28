@@ -3,7 +3,10 @@
 namespace App\Models\Menus;
 
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\Image;
+use App\Models\Location;
+use App\Models\Network;
 use App\Models\Reaction;
 use App\Models\Review;
 use App\Models\Tag;
@@ -80,6 +83,16 @@ class Service extends Model
     public function reactions()
     {
         return $this->morphMany(Reaction::class, 'reactionable');
+    }
+
+    public function contacts()
+    {
+        return $this->morphMany(Contact::class, 'contactable');
+    }
+
+    public function networks()
+    {
+        return $this->morphMany(Network::class, 'networkable');
     }
 
 
