@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 
-Route::get('', [HomeController::class, 'index'])->name('admin.home');
+Route::get('', [HomeController::class, 'index'])->middleware('can:admin.home')->name('admin.home');
 
 Route::resource('users', UserController::class)->only(['index','edit','update','destroy'])->names('admin.users');
 

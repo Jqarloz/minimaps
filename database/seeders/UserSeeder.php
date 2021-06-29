@@ -22,7 +22,15 @@ class UserSeeder extends Seeder
                 'email' => 'juancarlos_hs@hotmail.com',
                 'password' => bcrypt('donni123')
             ]
-        )->assignRole('SuperUser');
+        )->assignRole(['SuperUser','AdminMinimaps']);
+
+        User::create(
+            [
+                'name' => 'Juan',
+                'email' => 'juan@mail.com',
+                'password' => bcrypt('12345678')
+            ]
+        )->assignRole('UserMinimap');
 
         User::factory(9)->create();
     }
