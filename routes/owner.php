@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Owner\OwnerShops;
+use App\Http\Controllers\Owner\ShopController;
 
 Route::redirect('', 'owner/shops');
-Route::get('shops', OwnerShops::class)->name('shops.index');
+Route::resource('shops', ShopController::class)->names('shops');

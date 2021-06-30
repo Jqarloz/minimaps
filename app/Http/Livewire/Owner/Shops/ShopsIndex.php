@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Owner;
+namespace App\Http\Livewire\Owner\Shops;
 
 use Livewire\Component;
 use App\Models\Shop;
 use Livewire\WithPagination;
 
-class OwnerShops extends Component
+class ShopsIndex extends Component
 {
     use WithPagination;
 
@@ -18,7 +18,7 @@ class OwnerShops extends Component
                         ->where('name', 'LIKE', '%' . $this->search . '%')
                         ->paginate(5);
 
-        return view('livewire.owner.owner-shops', compact('shops'));
+        return view('livewire.owner.shops.shops-index', compact('shops'));
     }
 
     public function limpiar_page(){
