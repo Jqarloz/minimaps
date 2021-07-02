@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 use App\Models\Shop;
@@ -32,7 +33,9 @@ class ShopController extends Controller
 
     public function edit(Shop $shop)
     {
-        return view('owner.shops.edit', compact('shop'));
+        $categories = Category::where('type', 'Shops')->pluck('name', 'id');
+
+        return view('owner.shops.edit', compact('shop', 'categories'));
     }
 
     public function update(Request $request, Shop $shop)
