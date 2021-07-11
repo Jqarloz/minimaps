@@ -6,9 +6,10 @@
         {{-- <div class="px-6 py-4">
             <input class="form-control shadow-sm" placeholder="Buscar un negocio ...">
         </div> --}}
-        <div class="px-6 py-4">
-            <x-jet-input wire:keydown="limpiar_page" wire:model="search" class="w-full" placeholder="Buscar un negocio ..." type="text">
+        <div class="px-6 py-4 flex items-center">
+            <x-jet-input wire:keydown="limpiar_page" wire:model="search" class="flex-1" placeholder="Buscar un negocio ..." type="text">
             </x-jet-input>
+            <a href="{{route('owner.shops.create')}}" class="ml-8 btn btn-danger">Crear Negocio</a>
         </div>
 
         @if ($shops->count())

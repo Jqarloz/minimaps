@@ -18,7 +18,9 @@ class ShopController extends Controller
 
     public function create()
     {
-        return view('owner.shops.create');
+        $categories = Category::where('type', 'Shops')->pluck('name', 'id');
+
+        return view('owner.shops.create', compact('categories'));
     }
 
     public function store(Request $request)
