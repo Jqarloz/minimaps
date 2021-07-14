@@ -13,17 +13,46 @@
     <div class="">
         <p class="mb-2">Caracteristicas: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptatum expedita esse quasi tempora sequi eaque possimus sit! Ipsum impedit quos quas a minima qui vero eaque aliquam doloribus cupiditate?</p>
         {!! Form::file('file', ['class' => 'form-input w-full', 'id'=>'file', 'accept' => 'image/x-png,image/gif,image/jpeg']) !!}
+        @error('file')
+            <small class="text-sm text-danger">{{$message}}</small>
+        @enderror
     </div>
+</div>
+
+<div class="mb-4 mt-4">
+    <p class="font-weight-bold">Estatus:</p>
+    <label class="mr-2">
+        {!! Form::radio('status', 1, true) !!}
+        Crear como Borrador
+    </label>
+    <label>
+        {!! Form::radio('status', 2) !!}
+        Enviar a Revisión
+    </label>
+
+
+    @error('status')
+        <br>
+        <small class="text-danger">{{$message}}</small>
+    @enderror
 </div>
 
 <div class="mb-4">
     {!! Form::label('name', 'Nombre:') !!}
-    {!! Form::text('name', null, ['class' => 'form-input block w-full mt-1']) !!}
+    {!! Form::text('name', null, ['class' => 'form-input block w-full mt-1' . ($errors->has('name' ? ' border-red-600' : ''))]) !!}
+    
+    @error('name')
+        <small class="text-sm text-danger">{{$message}}</small>
+    @enderror
 </div>
 
 <div class="mb-4">
     {!! Form::label('slug', 'Slug:') !!}
-    {!! Form::text('slug', null, ['class' => 'form-input block w-full mt-1']) !!}
+    {!! Form::text('slug', null, ['readonly' => 'readonly','class' => 'form-input block w-full mt-1' . ($errors->has('name' ? ' border-red-600' : ''))]) !!}
+    
+    @error('slug')
+        <small class="text-sm text-danger">{{$message}}</small>
+    @enderror
 </div>
 
 <div class="mb-4">

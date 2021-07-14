@@ -5,12 +5,12 @@
                 <h1 class="text-2xl font-bold">Crear nuevo Negocio</h1>
                 <hr class="mt-2 mb-6">
 
-                {!! Form::open(['route'=>'owner.shops.store', 'files' => true]) !!}
+                {!! Form::open(['route'=>'owner.shops.store', 'files' => true, 'autocompleate' => 'off']) !!}
 
                     @include('owner.shops.partials.form')
 
                     <div class="flex justify-end mt-8">
-                        {!! Form::submit('Crear Negocio', ['class'=>'btn btn-primary']) !!}
+                        {!! Form::submit('Crear Negocio', ['class'=>'btn btn-primary cursor-pointer']) !!}
                     </div>
 
                 {!! Form::close() !!}

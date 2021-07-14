@@ -16,6 +16,7 @@ class ShopsIndex extends Component
     {
         $shops = Shop::where('user_id', auth()->user()->id)
                         ->where('name', 'LIKE', '%' . $this->search . '%')
+                        ->latest('id')
                         ->paginate(5);
 
         return view('livewire.owner.shops.shops-index', compact('shops'));

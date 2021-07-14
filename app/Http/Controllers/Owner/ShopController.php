@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Owner;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Shop;
+
+use App\Http\Requests\Admin\ShopRequest;
 
 class ShopController extends Controller
 {
@@ -23,9 +26,31 @@ class ShopController extends Controller
         return view('owner.shops.create', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(ShopRequest $request)
     {
+        $shop = Shop::create($request->all());
+
+        if ($request->file('file')) {
+            $url = Storage::put('shops', $request->file('file'));
+
+            $shop->image()->create([
+                'url' => $url
+            ]);
+        }
         
+        if ($request->tags) {
+            foreach ($request->tags as $tag) {
+                $shop->tags()->attach(
+                    $tag,
+                    [
+                    'taggable_id' => $shop->id,
+                    'taggable_type' => Shop::class
+                    ]
+                );
+            };
+        };
+        
+        return redirect()->route('owner.shops.index')->with('info', 'El negocio '. $request->name . ' se creo con éxito.');
     }
 
     public function show(Shop $shop)
