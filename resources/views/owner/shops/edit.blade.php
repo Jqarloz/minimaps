@@ -29,7 +29,8 @@
                 <h1 class=" text-2xl font-bold">Información del Negocio</h1>
                 <hr class="mt-2 mb-6">
 
-                {!! Form::model($shop, ['route' => ['owner.shops.edit',$shop], 'method' => 'put', 'files'=> true]) !!}
+                {!! Form::model($shop, ['route' => ['owner.shops.update',$shop], 'method' => 'put', 'files'=> true]) !!}
+                    {!! Form::hidden('user_id', auth()->user()->id) !!}
 
                     @include('owner.shops.partials.form')
                     

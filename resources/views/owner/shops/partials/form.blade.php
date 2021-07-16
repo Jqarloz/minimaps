@@ -12,11 +12,13 @@
     </div>
     <div class="">
         <p class="mb-2">Caracteristicas: Lorem ipsum dolor, sit amet consectetur adipisicing elit. Beatae voluptatum expedita esse quasi tempora sequi eaque possimus sit! Ipsum impedit quos quas a minima qui vero eaque aliquam doloribus cupiditate?</p>
-        {!! Form::file('file', ['class' => 'form-input w-full', 'id'=>'file', 'accept' => 'image/x-png,image/gif,image/jpeg']) !!}
-        @error('file')
-            <small class="text-sm text-danger">{{$message}}</small>
-        @enderror
+        {!! Form::file('file', ['class' => 'form-input w-full' . ($errors->has('name' ? ' border-red-600' : '')), 'id'=>'file', 'accept' => 'image/x-png,image/gif,image/jpeg']) !!}
     </div>
+
+    @error('file')
+        <br>
+        <small class="text-sm text-danger text-red-500">{{$message}}</small>
+    @enderror
 </div>
 
 <div class="mb-4 mt-4">
@@ -33,7 +35,7 @@
 
     @error('status')
         <br>
-        <small class="text-danger">{{$message}}</small>
+        <small class="text-sm text-danger text-red-500">{{$message}}</small>
     @enderror
 </div>
 
@@ -42,7 +44,7 @@
     {!! Form::text('name', null, ['class' => 'form-input block w-full mt-1' . ($errors->has('name' ? ' border-red-600' : ''))]) !!}
     
     @error('name')
-        <small class="text-sm text-danger">{{$message}}</small>
+        <small class="text-sm text-danger text-red-500">{{$message}}</small>
     @enderror
 </div>
 
@@ -51,7 +53,7 @@
     {!! Form::text('slug', null, ['readonly' => 'readonly','class' => 'form-input block w-full mt-1' . ($errors->has('name' ? ' border-red-600' : ''))]) !!}
     
     @error('slug')
-        <small class="text-sm text-danger">{{$message}}</small>
+        <small class="text-sm text-danger text-red-500">{{$message}}</small>
     @enderror
 </div>
 
@@ -105,15 +107,14 @@
         {!! Form::label('hour_always', 'Siempre abierto') !!}
     </div>
 </div>
-
 <div class="flex items-center gap-4 mb-2">
     <div class="flex items-center gap-2 text-lg">
         {!! Form::label('hour_open', 'Apertura:') !!}
-        {!! Form::time('hour_open', \Carbon\Carbon::createFromFormat('H:i:s', isset($shop) ? $shop->hour_open : '06:00:00')->format('H:i'), ['class'=>'form-control']) !!}
+        {!! Form::time('hour_open', \Carbon\Carbon::createFromFormat('H:i', isset($shop) ? $shop->hour_open : '06:00')->format('H:i'), ['class'=>'form-control']) !!}
     </div>
     <div class="flex items-center gap-2 text-lg">
         {!! Form::label('hour_close', 'Cierre:') !!}
-        {!! Form::time('hour_close', \Carbon\Carbon::createFromFormat('H:i:s', isset($shop) ? $shop->hour_close : '23:00:00')->format('H:i'), ['class'=>'form-control']) !!}
+        {!! Form::time('hour_close', \Carbon\Carbon::createFromFormat('H:i', isset($shop) ? $shop->hour_close : '23:00')->format('H:i'), ['class'=>'form-control']) !!}
     </div>
 </div>
 <hr class="w-full border-1 border-black bg-black">

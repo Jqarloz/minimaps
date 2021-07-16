@@ -41,8 +41,8 @@ class ShopFactory extends Factory
             'hs_maxcost' => $this->faker->randomElement([null, $this->faker->randomFloat(2,101,350)]),
             'website' => $this->faker->url(),
             'hour_always' => $this->faker->randomElement(['Y', 'N']),
-            'hour_open' => $this->faker->time('H:i:s'),
-            'hour_close' => $this->faker->time('H:i:s')
+            'hour_open' => $this->faker->time('H:i'),
+            'hour_close' => $this->faker->time('H:i')
         ];
     }
 }
