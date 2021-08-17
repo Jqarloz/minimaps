@@ -48,13 +48,14 @@
     @enderror
 </div>
 
-<div class="mb-4">
+<div class="mb-4 hidden">
     {!! Form::label('slug', 'Slug:') !!}
     {!! Form::text('slug', null, ['readonly' => 'readonly','class' => 'form-input block w-full mt-1' . ($errors->has('name' ? ' border-red-600' : ''))]) !!}
-    
+    {{-- 
     @error('slug')
         <small class="text-sm text-danger text-red-500">{{$message}}</small>
-    @enderror
+    @enderror 
+    --}}
 </div>
 
 <div class="mb-4">

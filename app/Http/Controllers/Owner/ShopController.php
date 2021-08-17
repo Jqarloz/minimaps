@@ -98,4 +98,8 @@ class ShopController extends Controller
     {
         //
     }
+
+    public function locations(Shop $shop){
+        return view('owner.shops.locations', compact('shop'));
+    }
 }
