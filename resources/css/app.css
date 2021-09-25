@@ -27,6 +27,10 @@ li{
     @apply block w-full bg-white px-3 py-3 rounded text-gray-800 border-gray-200 shadow-sm;
  }
 
+.form-input-disable{
+    @apply block w-full bg-gray-200 px-3 py-3 rounded text-gray-600 border-gray-200 shadow-sm;
+}
+
 .form-control:focus{
     @apply bg-white outline-none border border-gray-500
 }

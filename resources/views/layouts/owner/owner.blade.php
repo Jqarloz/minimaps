@@ -78,5 +78,10 @@
         @isset($js)
             {{$js}}            
         @endisset
+
+        
+        @isset($mapJS)
+            {{$mapJS}}            
+        @endisset
     </body>
 </html>

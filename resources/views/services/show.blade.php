@@ -156,7 +156,7 @@
                             @php
                                 $varLocation = $service->location->latitude . "," . $service->location->longitude;
                                 $url = "https://www.google.com/maps/dir/?api=1&destination=".$varLocation."&map_action=map&center=".$varLocation;
-                                $url2 = "https://maps.googleapis.com/maps/api/staticmap?center=".$varLocation."&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:".substr($service->name,0,1)."%7C".$varLocation."&key=AIzaSyBokaTHMOxzrIvuLG9rMUCJuY9bF0JwEjE"
+                                $url2 = "https://maps.googleapis.com/maps/api/staticmap?center=".$varLocation."&zoom=15&size=600x300&maptype=roadmap&markers=color:red%7Clabel:".substr($service->name,0,1)."%7C".$varLocation."&key=AIzaSyCt2VU9zcFfJojsNYjrYhC15kmZNQJRmks"
                             @endphp
 
                             <div class="my-4">
