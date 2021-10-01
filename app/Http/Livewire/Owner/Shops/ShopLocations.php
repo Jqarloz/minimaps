@@ -9,7 +9,10 @@ use Livewire\Component;
 class ShopLocations extends Component
 {
 
-    public $shop, $location;
+    public $shop, $location,$address;
+    protected $listeners = ['getAddressForInput' => 'getAddressForInput', 'getGeoLocation' => 'getGeoLocation'];
+    public $geoLatitude, $geoLongitude;
+    
 
     protected $rules = [
         'location.address' => 'required',
@@ -26,7 +29,12 @@ class ShopLocations extends Component
     public function mount(Shop $shop)
     {
         $this->shop = $shop;
-        $this->location = $shop->location;
+        $this->location = new Location();
+
+        if ($shop->location) {
+            $this->geoLatitude = $shop->location->latitude; 
+            $this->geoLongitude = $shop->location->longitude;
+        };
     }
 
     public function render()
@@ -39,8 +47,39 @@ class ShopLocations extends Component
         $this->location = $location;
     }
 
-    public function updateMap()
+    public function update()
     {
-        return view('livewire.owner.shops.map-view');
+        $this->validate();
+        $this->location->save();
+
+        //update variables nuevamente
+        $this->location = new Location();
+        $this->shop = Shop::find($this->shop->id);
+        $this->updateMap($this->shop->location);
+
     }
+
+    public function updateMap($location)
+    {
+        return view('livewire.owner.shops.map-view', $location);
+    }
+
+    public function getAddressForInput($latitude, $longitud, $postal_code, $locality, $political, $country, $address)
+    {
+        $this->location->latitude = $latitude;
+        $this->location->longitude = $longitud;
+        $this->location->zip_code = $postal_code;
+        $this->location->city = $locality;
+        $this->location->state = $political;
+        $this->location->country = $country;
+        $this->location->address = $address;
+        $this->updateMap($this->location);
+    }
+
+    public function getGeoLocation($latitude, $longitude)
+    {
+        $this->geoLatitude = $latitude; 
+        $this->geoLongitude = $longitude;
+    }
+
 }

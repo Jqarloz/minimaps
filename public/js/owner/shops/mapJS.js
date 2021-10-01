@@ -2,8 +2,7 @@ var map, marker;
 var postal_code, locality, political, country, address;
 
 function initMap() {
-    
-    var location = new google.maps.LatLng(document.getElementById("latitude").value, document.getElementById("longitude").value);
+    var location = new google.maps.LatLng(document.getElementById("geoLatitude").value, document.getElementById("geoLongitude").value);
     var mapProperty = {
         center: location,
         zoom: 17,         
@@ -14,7 +13,6 @@ function initMap() {
 
     map = new google.maps.Map(document.getElementById('map'), mapProperty);
 
-
     marker = new google.maps.Marker({
         map: map,
         draggable: true,
@@ -24,7 +22,6 @@ function initMap() {
 
     geocodePosition(marker.getPosition());
 
-    
     //EVENTO PARA GEOLOCALIZACION DEL NAVEGADOR
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function (position){
@@ -76,7 +73,7 @@ function initMap() {
     var buttonOK = document.getElementById("buttonOK");
     buttonOK.addEventListener("click", function (){
             setInputValues();
-    }, false);
+    }, false); 
 
 }
 
@@ -102,13 +99,14 @@ function geocodePosition(pos){
 }
 
 function setInputValues(){
-    $("#latitude").val(marker.getPosition().lat());
-    $("#longitude").val(marker.getPosition().lng());
-    $("#zip_code").val(postal_code);
-    $("#city").val(locality);
-    $("#state").val(political);
-    $("#country").val(country);
-    $("#address").val(address);
+    
+    //Assignacion de variables a modelo Livewire mediante emit
+    var latitude = marker.getPosition().lat();
+    var longitud = marker.getPosition().lng();
+
+    Livewire.emit('getAddressForInput', latitude, longitud, postal_code, locality, political, country, address);
+    Livewire.emit('getGeoLocation', latitude, longitud);
+
 }
 
 function setVariablesGlobales(results){

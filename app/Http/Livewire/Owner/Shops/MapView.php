@@ -17,6 +17,6 @@ class MapView extends Component
 
     public function render()
     {
-        return view('livewire.owner.shops.map-view');
+        return view('livewire.owner.shops.map-view', $this->location);
     }
 }

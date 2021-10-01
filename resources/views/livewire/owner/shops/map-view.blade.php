@@ -9,8 +9,5 @@
         <div class="my-4 w-full">
             <center><img class="object-center" src="{{$url2}}" alt=""></center>
         </div>
-        <div class="grid justify-items-center">
-            <a class="btn btn-primary" target="blank" href="{{$url}}">Ver en Maps</a>
-        </div>
     </div>
 </div>
