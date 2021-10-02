@@ -2,7 +2,10 @@ var map, marker;
 var postal_code, locality, political, country, address;
 
 function initMap() {
-    var location = new google.maps.LatLng(document.getElementById("geoLatitude").value, document.getElementById("geoLongitude").value);
+    var posX = document.getElementById("geoLatitude").value;
+    var posY = document.getElementById("geoLongitude").value;
+
+    var location = new google.maps.LatLng(posX, posY);
     var mapProperty = {
         center: location,
         zoom: 17,         
@@ -137,14 +140,14 @@ function setVariablesGlobales(results){
             postal_code = results[0].address_components[i].long_name;
         }
     }
-    if (street_number == 'undefined') {
+    if (street_number == 'undefined' || street_number == 'Unnamed Road') {
         street_number = '';
     }
-    if (route == 'undefined') {
+    if (route == 'undefined' || route == 'Unnamed Road') {
         route = '';
     }
 
-    if (address =='' && street_number == ''){
+    if (route =='' && street_number == ''){
         address = '';
     }else{
         address = route + ' ' + street_number;

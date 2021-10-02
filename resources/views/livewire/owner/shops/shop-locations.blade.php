@@ -5,11 +5,11 @@
     <article class="card">
         <div x-data="{open: false}" class="card-body bg-gray-50">
             <header></header>
+            <div class="hidden">
+                <input type="text" id="geoLatitude" value="{{$geoLatitude}}" readonly>
+                <input type="text" id="geoLongitude" value="{{$geoLongitude}}" readonly>
+            </div>
             @if ($shop->location)
-                <div class="hidden">
-                    <input type="text" id="geoLatitude" value="{{$geoLatitude}}" readonly>
-                    <input type="text" id="geoLongitude" value="{{$geoLongitude}}" readonly>
-                </div>
                 @if ($location->locationable_id == $shop->location->locationable_id && $location->locationable_type == $shop->location->locationable_type)
                     {{-- ACTIVAR FORM cuando se da CLIC en Editar --}}
                     <form wire:submit.prevent="update">
@@ -123,10 +123,85 @@
                 @endif
 
             @else
-                <div class="flex items-center justify-center h-24">
-                    <button class="btn btn-sucess text-lg font-bold">Crear ubicación</button>
-                </div>
+                
+                @if ($newLocation != true)
+                    {{-- Boton de Crear Ubicacion --}}
+                    <div class="flex items-center justify-center h-24">
+                        <button class="btn btn-sucess text-lg font-bold" wire:click="create()">Crear ubicación</button>
+                    </div>
+                @else
+                    {{-- Form para crear --}}
+                    <form wire:submit.prevent="store()">
+                        {{-- Submit Form --}}
+                        <div class="flex justify-start mb-3">
+                            <button type="submit" class="btn btn-sucess">Guardar cambios</button>
+                        </div>
+                        {{-- Boton de abrir modal --}}
+                        <div class="object-center justify-center mt-6 flex">
+                                <a @click="open = true" class="btn btn-primary cursor-pointer" onclick="initMap()">Elegir ubicación</a>
+                        </div> 
+
+                        {{-- Datos solo editables escogiendo punto del mapa --}}
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4 object-center">
+                            <div class="grid grid-cols-1">
+                                <label class="text-xs col-span-1 ml-2">Dirección:</label>
+                                <input id="addressNew" wire:model="addressNew" type="text" class="form-input-disable col-span-1 md:col-span-1 lg:col-span-2" readonly required>
+                            </div>
+                            <div class="grid grid-cols-1">
+                                <label class="text-xs col-span-1 ml-2">Municipio/Localidad:</label>
+                                <input wire:model="cityNew" id="cityNew" type="text" class="form-input-disable col-span-1 md:col-span-2 lg:col-span-1" readonly>
+                            </div>
+                            <div class="grid grid-cols-1">
+                                <label class="text-xs col-span-1 ml-2">Código Postal:</label>
+                                <input wire:model="zip_codeNew" id="zip_codeNew" type="text" class="form-input-disable col-span-1 md:col-span-1 lg:col-span-1" readonly>
+                                @error('zip_codeNew')
+                                    <span class="text-xs text-red-500">{{$message}}</span>                                
+                                @enderror
+                            </div>
+                            <div class="grid grid-cols-1">
+                                <label class="text-xs col-span-1 ml-2">Estado:</label>
+                                <input wire:model="stateNew" id="stateNew" type="text" class="form-input-disable col-span-1 md:col-span-1 lg:col-span-1" readonly>
+                            </div>
+                            <div class="grid grid-cols-1">
+                                <label class="text-xs col-span-1 ml-2">País:</label>
+                                <input wire:model="countryNew" id="countryNew" type="text" class="form-input-disable col-span-1 md:col-span-1 lg:col-span-1" readonly>
+                            </div>
+                        </div>
+                        {{-- Datos Editables --}}
+                        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 mt-4">
+                            <div class="grid grid-cols-1 md:col-span-2 lg:col-span-2">
+                                <label class="text-xs col-span-1 ml-2">Referencias:</label>
+                                <input wire:model="referenceNew" type="text" class="form-input col-span-2">
+                            </div>
+                            <div class="grid grid-cols-1">
+                                <label class="text-xs col-span-1 ml-2">¿El negocio tiene local fijo?</label>
+                                <select wire:model="physical_locationNew" class="form-input col-span-1">
+                                    <option></option>
+                                    <option value="S">Si</option>
+                                    <option value="N">No</option>
+                                </select>
+                                @error('physical_locationNew')
+                                    <span class="text-xs text-red-500">{{$message}}</span>                                
+                                @enderror
+                            </div>
+                        </div>
+                            {{-- Datos Ocultos --}}
+                            <div class=" gap-4 mt-4 hidden">
+                                <div class="">
+                                    <label class="text-xs col-span-1 ml-2">Latitud:</label>
+                                    <input wire:model="latitudeNew" id="latitudeNew" type="text" class="form-input col-span-1" readonly>
+                                </div>
+                                <div class="">
+                                    <label class="text-xs col-span-1 ml-2">Longuitud:</label>
+                                    <input wire:model="longitudeNew" id="longitudeNew" type="text" class="form-input col-span-1" readonly>
+                                </div>
+                            </div>
+                    </form>
+                @endif
+                 
             @endif
+
+            
 
             {{-- MODAL para Elegir Ubicación --}}
             <div class="gap-4 mt-4"> 
@@ -141,7 +216,7 @@
                             <a @click="open = false" class="cursor-pointer"><i class="fas fa-times text-lg"></i></a>
                         </div>
                         <div class="flex items-center justify-items-center gap-2">
-                            <input type="text" id="searchAddress" class="form-input">
+                            <input type="text" id="searchAddress" class="form-input" placeholder="Ej: Hidalgo 1 San Miguel Xoxtla, Puebla, Mexico">
                             <a id="buttonSearch" class="btn btn-primary cursor-pointer col-span-1">Buscar</a>
                         </div>
                         <p class="text-xs text-red-500" id="searchError"></p>
