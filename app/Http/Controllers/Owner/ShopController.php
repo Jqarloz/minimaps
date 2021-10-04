@@ -102,4 +102,8 @@ class ShopController extends Controller
     public function locations(Shop $shop){
         return view('owner.shops.locations', compact('shop'));
     }
+
+    public function social(Shop $shop){
+        return view('owner.shops.social', compact('shop'));
+    }
 }

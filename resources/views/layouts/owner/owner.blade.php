@@ -40,23 +40,25 @@
             <!-- Page Content -->
             <div class="container py-8">
                 <aside>
-                    <h1 class="font-bold text-lg text-gray-700 mb-4">Editar el Negocio</h1>
-                    
+                    <div class="flex justify-between">
+                        <h1 class="font-bold text-lg text-gray-700 mb-2">Editar el Negocio</h1>
+                        <a href="{{route('owner.shops.index')}}" class="btn btn-sucess px-4"> <i class="fas fa-long-arrow-alt-left"></i> Volver</a>
+                    </div>
                     <div>   
-                        <ul class="flex gap-4 text-sm">
-                            <li class="leading-7 border-l-4  @routeIs('owner.shops.edit', $shop) border-indigo-400 pl-1 bg-gradient-to-r from-indigo-100 to-indigo-50 font-bold @else border-transparent @endif">
+                        <ul class="flex text-sm">
+                            <li class="leading-7 border-b-4 border-t-2 border-r-2 border-l-2 px-2 py-1 rounded-t-md  @routeIs('owner.shops.edit', $shop) border-indigo-400 pl-b bg-gradient-to-t from-indigo-100 to-indigo-50 font-bold @else border-gray-200 @endif">
                                 <a href="{{route('owner.shops.edit', $shop)}}">Información del negocio</a>
                             </li>
             
-                            <li class="leading-7 border-l-4 @routeIs('owner.shops.location', $shop) border-indigo-400 pl-1 bg-gradient-to-r from-indigo-100 to-indigo-50 font-bold @else border-transparent @endif">
+                            <li class="leading-7 border-b-4 border-t-2 border-r-2 border-l-2 px-2 py-1 rounded-t-md @routeIs('owner.shops.location', $shop) border-indigo-400 pl-b bg-gradient-to-t from-indigo-100 to-indigo-50 font-bold @else border-gray-200 @endif">
                                 <a href="{{route('owner.shops.location', $shop)}}">Ubicación</a>
                             </li>
             
-                            <li class="leading-7 border-l-4 border-transparent">
-                                <a href="">Redes sociales</a>
+                            <li class="leading-7 border-b-4 border-t-2 border-r-2 border-l-2 px-2 py-1 rounded-t-md @routeIs('owner.shops.social', $shop) border-indigo-400 pl-b bg-gradient-to-t from-indigo-100 to-indigo-50 font-bold @else border-gray-200 @endif">
+                                <a href="{{route('owner.shops.social', $shop)}}">Redes sociales</a>
                             </li>
             
-                            <li class="leading-7 border-l-4 border-transparent">
+                            <li class="leading-7 border-b-4 border-t-2 border-r-2 border-l-2 px-2 py-1 rounded-t-md border-gray-200">
                                 <a href="">Productos Principales</a>
                             </li>
                         </ul>

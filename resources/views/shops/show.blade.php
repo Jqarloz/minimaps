@@ -113,7 +113,7 @@
                                         <i class="fab fa-tiktok"></i> TikTok
                                     </a>
                                 @elseif($network->type == 'linkedin')
-                                    <a class="btn bg-blue-200 w-full btn-block" href="{{'https://www.linkedin.com/in/' . $network->url}}" target="blank">
+                                    <a class="btn bg-blue-300 w-full btn-block" href="{{'https://www.linkedin.com/in/' . $network->url}}" target="blank">
                                         <i class="fab fa-linkedin"></i> LinkedIn
                                     </a>
                                 @elseif($network->type == 'youtube')
