@@ -1,9 +1,9 @@
 //Slug automático
 document.getElementById("name").addEventListener('keyup', slugChange);
-
 function slugChange(){
     
     name = document.getElementById("name").value;
+    console.log(name);
     document.getElementById("slug").value = slug(name);
 
 }

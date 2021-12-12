@@ -32,25 +32,19 @@ li{
 }
 
 .form-control:focus{
-    @apply bg-white outline-none border border-gray-500
-}
-
-.btn-primary{
-    @apply bg-blue-500 text-white font-bold px-4 py-2 rounded mb-2;
-}
-
-.btn-primary:hover{
-    @apply bg-blue-700;
-}
-
-.btn-danger{
-    @apply bg-red-500 text-white font-bold px-4 py-2 rounded mb-2;
-}
-
-.btn-danger:hover{
-    @apply bg-red-700;
+    @apply bg-white outline-none border border-gray-500;
 }
 
 .error-form-label{
     @apply text-xs text-red-500 italic;
+}
+
+.form-modal{
+    @apply fixed inset-0 z-50 overflow-auto bg-white bg-opacity-75 flex items-center justify-center px-4;
+}
+
+@media(min-width:640px){
+    .form-modal{
+        @apply px-0;
+    }
 }

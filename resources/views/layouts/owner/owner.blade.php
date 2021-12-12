@@ -58,8 +58,8 @@
                                 <a href="{{route('owner.shops.social', $shop)}}">Redes sociales</a>
                             </li>
             
-                            <li class="leading-7 border-b-4 border-t-2 border-r-2 border-l-2 px-2 py-1 rounded-t-md border-gray-200">
-                                <a href="">Productos Principales</a>
+                            <li class="leading-7 border-b-4 border-t-2 border-r-2 border-l-2 px-2 py-1 rounded-t-md @routeIs('owner.shops.products', $shop) border-indigo-400 pl-b bg-gradient-to-t from-indigo-100 to-indigo-50 font-bold @else border-gray-200 @endif">
+                                <a href="{{route('owner.shops.products', $shop)}}">Productos Principales</a>
                             </li>
                         </ul>
                     </div>
@@ -81,6 +81,9 @@
             {{$js}}            
         @endisset
 
+        @isset($js_lw)
+            {{$js_lw}}            
+        @endisset
         
         @isset($mapJS)
             {{$mapJS}}            

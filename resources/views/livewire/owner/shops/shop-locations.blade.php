@@ -207,7 +207,7 @@
             <div class="gap-4 mt-4"> 
                 <div 
                 x-show="open"
-                class="fixed inset-0 z-50 overflow-auto bg-white bg-opacity-75 flex items-center justify-center px-4 md:px-0">
+                class="form-modal">
                     <div 
                     @click.away="open = false"
                     class="bg-white flex flex-col shadow-2xl rounded-lg border-2 border-gray-400 p-6">

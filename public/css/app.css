@@ -33573,45 +33573,7 @@ li{
   border-color: rgba(107, 114, 128, var(--tw-border-opacity));
   border-width: 1px;
   outline: 2px solid transparent;
-  outline-offset: 2px
-}
-
-.btn-primary{
-  --tw-bg-opacity: 1;
-  background-color: rgba(59, 130, 246, var(--tw-bg-opacity));
-  border-radius: 0.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-
-.btn-primary:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgba(29, 78, 216, var(--tw-bg-opacity));
-}
-
-.btn-danger{
-  --tw-bg-opacity: 1;
-  background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
-  border-radius: 0.25rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
-}
-
-.btn-danger:hover{
-  --tw-bg-opacity: 1;
-  background-color: rgba(185, 28, 28, var(--tw-bg-opacity));
+  outline-offset: 2px;
 }
 
 .error-form-label{
@@ -33620,6 +33582,31 @@ li{
   --tw-text-opacity: 1;
   color: rgba(239, 68, 68, var(--tw-text-opacity));
   font-style: italic;
+}
+
+.form-modal{
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  --tw-bg-opacity: 0.75;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  z-index: 50;
+}
+
+@media(min-width:640px){
+  .modal{
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 
 @media (min-width: 640px){
