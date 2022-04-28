@@ -33591,9 +33591,8 @@ li{
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  overflow: scroll;
+  overflow-y: auto;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -33603,7 +33602,7 @@ li{
 }
 
 @media(min-width:640px){
-  .modal{
+  .form-modal{
     padding-left: 0px;
     padding-right: 0px;
   }

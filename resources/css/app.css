@@ -40,7 +40,7 @@ li{
 }
 
 .form-modal{
-    @apply fixed inset-0 z-50 overflow-auto bg-white bg-opacity-75 flex items-center justify-center px-4;
+    @apply fixed inset-0 z-50 overflow-y-auto overflow-scroll bg-white bg-opacity-75 flex items-center justify-center;
 }
 
 @media(min-width:640px){
